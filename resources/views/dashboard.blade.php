@@ -37,6 +37,7 @@
     @isset($users)
       @foreach($users as $user)
         <p>{{$user->name}}</p>
+        <p>Zmiana w galezi test</p>
       @endforeach
     @endif
 
