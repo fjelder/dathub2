@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.main-menu a{
+    font-family: 'Poppins';
+    @apply tracking-wide;
+}
+header h2{
+    font-family: 'Poppins';
+    @apply tracking-wide;
+}
+p.logo{
+    font-family: 'Pacifico', cursive;
+    @apply text-2xl text-gray-300 tracking-wide;
+}
+p.logo.login{
+    @apply text-3xl;
+}
