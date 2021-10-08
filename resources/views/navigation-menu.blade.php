@@ -21,7 +21,7 @@
                         <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('contacts')">
                             Kontakt
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                        <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                             {{ __('Users') }}
                         </x-jet-nav-link>
                     </div>

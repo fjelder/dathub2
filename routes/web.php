@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
+use App\Http\Controllers\UserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +23,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/users', function () {
-    $users = User::all();
+Route::get('/users2', function () {
+    $users = User::paginate(5);
     return view('dashboard', ['users' => $users]);
 })->name('users');
+
+Route::resources([
+    'users' => UserController::class
+]);

@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -29,7 +31,7 @@
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between">
                         <div>
                             @if(isset($header))
-                            {{ $header }}
+                            <h2>{{ $header }}</h2>
                             @endif
                         </div>
                         <div>
@@ -42,7 +44,23 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="max-w-7xl mx-auto">
+            @if (session('status'))
+                <div class="my-6 sm:px-6 lg:px-8">
+                    <div class="bg-gray-50 border-2 border-indigo-100 rounded-lg sm:px-6 lg:px-8 py-5">
+                        <p class="text-gray-500">
+                            {{ session('status') }}
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="hidden sm:block" aria-hidden="true">
+                    <div class="py-5">
+                        <div class="border-t border-gray-200"></div>
+                    </div>
+                </div>
+                
+            @endif
                 {{ $slot }}
             </main>
         </div>
