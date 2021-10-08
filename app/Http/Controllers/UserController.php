@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('isAdmin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -78,9 +82,15 @@ class UserController extends Controller
     {
         //
         $user = User::where('id', $id)->first();
-        $user->is_active = $request->is_active;
-        $user->save();
-        return redirect()->route('users.index')->with('status', 'Konto użytkownika zostało zaktualizowane!');;
+        if($request->is_active != $user->is_active)
+        {
+            $user->is_active = $request->is_active;
+            $user->save();
+            return redirect()->route('users.index')->with('status', 'Konto użytkownika <span class="text-extra">'.$user->name.'</span> zostało zaktualizowane!')->with('state', '1');
+        }
+        return redirect()->route('users.index')->with('status', 'Ustawienia konta użytkownika <span class="text-extra">'.$user->name.'</span> nie zostały zmienione!')->with('state', '3');
+        
+        
     }
 
     /**

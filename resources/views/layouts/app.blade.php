@@ -13,8 +13,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
         <!-- Styles -->
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        
         @livewireStyles
 
         <!-- Scripts -->
@@ -46,17 +48,9 @@
             <!-- Page Content -->
             <main class="max-w-7xl mx-auto">
             @if (session('status'))
-                <div class="my-6 sm:px-6 lg:px-8">
-                    <div class="bg-gray-50 border-2 border-indigo-100 rounded-lg sm:px-6 lg:px-8 py-5">
-                        <p class="text-gray-500">
-                            {{ session('status') }}
-                        </p>
-                    </div>
-                    
-                </div>
                 <div class="hidden sm:block" aria-hidden="true">
-                    <div class="py-5">
-                        <div class="border-t border-gray-200"></div>
+                    <div class="sm:px-6 lg:px-8 pt-5">
+                        <x-status :message="session('status')" :state="session('state')"/>
                     </div>
                 </div>
                 

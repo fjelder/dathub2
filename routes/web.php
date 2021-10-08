@@ -28,6 +28,9 @@ Route::get('/users2', function () {
     return view('dashboard', ['users' => $users]);
 })->name('users');
 
-Route::resources([
-    'users' => UserController::class
-]);
+
+Route::middleware(['isAdmin'])->group(function () {
+    Route::resources([
+        'users' => UserController::class
+    ]);
+});
