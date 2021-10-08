@@ -18,3 +18,9 @@ Breadcrumbs::for('usersName', function (BreadcrumbTrail $trail, User $user) {
     $trail->parent('users');
     $trail->push($user->name, route('users.show', $user->id));
 });
+
+// Home > Contacts
+Breadcrumbs::for('contacts', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Kontakty', route('people.index'));
+});

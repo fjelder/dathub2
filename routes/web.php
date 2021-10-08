@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PersonController;
 
 
 /*
@@ -27,6 +28,10 @@ Route::get('/users2', function () {
     $users = User::paginate(5);
     return view('dashboard', ['users' => $users]);
 })->name('users');
+
+Route::resources([
+    'people' => PersonController::class
+]);
 
 
 Route::middleware(['isAdmin'])->group(function () {
