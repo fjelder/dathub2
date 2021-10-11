@@ -20,7 +20,7 @@ class CreatePeopleTable extends Migration
             $table->string('email')->unique();
             $table->string('phone1', 15)->unique();
             $table->string('phone2', 15)->unique();
-            $table->mediumText('description');
+            $table->mediumText('description')->nullable();;
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedBigInteger('created_by_user')->nullable();
