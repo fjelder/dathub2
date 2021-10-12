@@ -556,10 +556,56 @@
 
                     <!-- Product grid -->
                     <div class="lg:col-span-3">
+
                         <div class="flex flex-wrap">
                             @foreach($people as $person)
-                            <div class="border w-96 rounded-sm m-2 text-sm shadow-sm space-y-3">
-                                <div class="bg-gray-50 border-b px-3 pt-2">
+                                <div class="w-full sm:w-1/2">
+                                    
+                                    <div class="border rounded-md m-2 hover:bg-gray-50 cursor-pointer">
+                                        <div class="px-3 py-2 text-sm">
+                                            <p>{{$person->first_name}} {{$person->last_name}}</p>
+                                            @isset($person->company->id)
+                                            <p class="text-gray-500">{{$person->company->full_name}}</p>
+                                            <p class="text-gray-400 text-xs">{{$person->company->short_name}}</p>
+                                            @else
+                                            <p class="text-gray-400">-</p>
+                                            <p class="text-gray-400">--</p>
+                                            @endif
+                                        </div>
+
+                                        <div class="flex flex-col border-t-2 border-indigo-200 text-xs text-gray-500">
+                                            <div class="px-3 py-2 flex items-center">
+                                                <div>
+                                                    <x-heroicon-o-mail class="w-5 h-5 mr-3 text-indigo-400"/>
+                                                </div>
+                                                <div class="">
+                                                    {{$person->email}}
+                                                </div>
+                                            </div>
+                                            <div class="px-3 py-2 flex items-center">
+                                                <div>
+                                                    <x-heroicon-o-phone class="w-5 h-5 mr-3 text-blue-400"/>
+                                                </div>
+                                                <div>
+                                                    {{$person->phone1}}</br>
+                                                    {{$person->phone2}}
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                          
+                          </div>
+
+
+                        <div class="flex flex-wrap">
+                            @foreach($people as $person)
+
+                            
+
+                            <div class="border w-96 rounded-md m-2 text-sm shadow-sm hidden">
+                                <div class="rounded-t-md shadow-sm border-b px-3 py-2">
                                     <a href="{{route('people.show', $person->id)}}" class="text-gray-600 hover:text-indigo-400 font-bold block">
                                         {{$person->first_name}} {{$person->last_name}}
                                     </a>
@@ -567,15 +613,33 @@
                                         {{$person->email}}
                                     </span>
                                 </div>
-                                <div class=" px-3">
-                                    {{$person->company->full_name}}
-                                    {{$person->company->short_name}}
+                                @isset($person->company->id)
+                                <div class="px-3 border-b">
+                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-user-group class="w-5 h-5 inline-block" /></span>
+                                    <a href="{{route('companies.show', $person->company->id)}}">
+                                        <span class="text-gray-700">{{$person->company->full_name}}</span>
+                                    </a>
                                 </div>
-                                <p class="text-gray-400 px-3 pb-3">
-                                    <x-heroicon-o-phone class="w-5 h-5 inline-block" />
-                                    {{$person->phone1}}
-                                    {{$person->phone2}}
-                                </p>
+                                @endif
+                                @isset($person->phone1)
+                                <div class="px-3 border-b">
+                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-device-mobile class="w-5 h-5 inline-block" /></span>
+                                    <span class="text-gray-700">{{$person->phone1}}</span>
+                                </div>
+                                @endif
+                                @isset($person->phone2)
+                                <div class="px-3 border-b">
+                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-phone class="w-5 h-5 inline-block" /></span>
+                                    <span class="text-gray-700">{{$person->phone2}}</span>
+                                </div>
+                                @endif
+                                @isset($person->description)
+                                <div class="px-3">
+                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-information-circle class="w-5 h-5 inline-block" /></span>
+                                    <span class="text-gray-700">{{$person->description}}</span>
+                                </div>
+                                @endif
+                         
                             </div>
                             @endforeach
                         </div>
