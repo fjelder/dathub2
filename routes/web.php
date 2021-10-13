@@ -31,7 +31,7 @@ Route::get('/users2', function () {
 })->name('users');
 
 Route::resources([
-    'people' => PersonController::class,
+    'contacts' => PersonController::class,
     'companies' => CompanyController::class
 ]);
 

@@ -22,5 +22,5 @@ Breadcrumbs::for('usersName', function (BreadcrumbTrail $trail, User $user) {
 // Home > Contacts
 Breadcrumbs::for('contacts', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Kontakty', route('people.index'));
+    $trail->push('Kontakty', route('contacts.index'));
 });

@@ -18,7 +18,7 @@
                         <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('people.index') }}" :active="request()->routeIs('people.index')">
+                        <x-jet-nav-link href="{{ route('contacts.index') }}" :active="request()->routeIs('contacts.index')">
                             Kontakty
                         </x-jet-nav-link>
                         @if(Auth::user()->is_admin)

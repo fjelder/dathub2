@@ -28,7 +28,7 @@ class PersonFactory extends Factory
             'phone1' => $this->faker->e164PhoneNumber(),
             'phone2' => $this->faker->e164PhoneNumber(),
             'description' => $this->faker->text($maxNbChars = 200), 
-            'company_id' => null,
+            'company_id' => $this->faker->numberBetween($min = 1, $max = 10),
             'created_by_user' => $this->faker->numberBetween($min = 1, $max = 10),
         ];
     }

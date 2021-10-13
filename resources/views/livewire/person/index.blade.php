@@ -5,7 +5,7 @@
 
       Off-canvas filters for mobile, show/hide based on off-canvas filters state.
     -->
-        <div class="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 flex z-40 lg:hidden hidden" role="dialog" aria-modal="true">
             <!--
         Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
@@ -372,18 +372,15 @@
                         x-transition:leave-end="opacity-0 transform scale-95"
                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="py-1" role="none">
-                                <!--
-                  Active: "bg-gray-100", Not Active: ""
 
-                  Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
-                -->
-                                <a href="#" class="font-medium text-gray-900 block px-4 py-2 text-sm" role="menuitem"
-                                    tabindex="-1" id="menu-item-0">
+                                <a href="#" class="{{$sort == 'asc' ? 'font-medium text-gray-900' : 'text-gray-500' }} block px-4 py-2 text-sm" role="menuitem"
+                                    tabindex="-1" id="menu-item-0"
+                                    wire:click="$set('sort', 'asc')">
                                     Alfabetycznie rosnąco
                                 </a>
 
-                                <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                                    id="menu-item-1">
+                                <a href="#" class="{{$sort == 'desc' ? 'font-medium text-gray-900' : 'text-gray-500' }} block px-4 py-2 text-sm" role="menuitem"    tabindex="-1" id="menu-item-1"
+                                    wire:click="$set('sort', 'desc')">
                                     Alfabetycznie malejącą
                                 </a>
 
@@ -452,105 +449,28 @@
                                 </a>
                             </li>
                         </ul>
-
-                        <div class="border-b border-gray-200 pb-6" x-data="{open: true}">
-                            <h3 class="-my-3 flow-root">
-                                <!-- Expand/collapse section button -->
-                                <button type="button"
-                                    class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500"
-                                    aria-controls="filter-section-0" aria-expanded="false">
-                                    <span class="font-medium text-gray-900">
-                                        Wyszukaj
-                                    </span>
-                                    <span class="ml-6 flex items-center">
-                                        <!--
-                                        Expand icon, show/hide based on section open state.
-
-                                        Heroicon name: solid/plus-sm
-                                        -->
-                                        <x-heroicon-s-plus class="h-5 w-5" @click="open=true" />
-                                        <!--
-                                        Collapse icon, show/hide based on section open state.
-
-                                        Heroicon name: solid/minus-sm
-                                        -->
-                                        <x-heroicon-s-minus-sm class="h-5 w-5" @click="open=false" />
-                                    </span>
-                                </button>
-                            </h3>
-                            <!-- Filter section, show/hide based on section state. -->
-                            <div class="pt-6" id="filter-section-0" 
-                            x-show="open"
-                            x-cloak
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 transform scale-90"
-                            x-transition:enter-end="opacity-100 transform scale-100"
-                            x-transition:leave="transition ease-in duration-300"
-                            x-transition:leave-start="opacity-100 transform scale-100"
-                            x-transition:leave-end="opacity-0 transform scale-90"
-                            >
-                                <div class="space-y-4">
-                                    <div class="flex items-center relative">
-                                        <input name="search" type="text" class="h-10 w-full border-gray-300 rounded text-indigo-600 focus:ring-indigo-500 text-sm pr-8" wire:model="search">
-                                        <x-heroicon-o-trash class="w-5 text-gray-500 absolute right-2 cursor-pointer hover:text-indigo-600" wire:click="$set('search', '')"/>
-                                    </div>
-
-                         
-                                </div>
+                        <x-filterBlock title="Wyszukaj" open="true">
+                            <div class="flex items-center relative">
+                                <input name="search" type="text"
+                                    class="h-10 w-full border-gray-300 rounded text-indigo-600 focus:ring-indigo-300 text-sm pr-8"
+                                    wire:model="search">
+                                <x-heroicon-o-trash class="w-5 text-gray-500 absolute right-2 cursor-pointer hover:text-indigo-600"
+                                    wire:click="$set('search', '')" />
                             </div>
-                        </div>
+                        </x-filterBlock>
                         @isset($companies)
-                        <div class="border-b border-gray-200 py-6">
-                            <h3 class="-my-3 flow-root">
-                                <!-- Expand/collapse section button -->
-                                <button type="button"
-                                    class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500"
-                                    aria-controls="filter-section-1" aria-expanded="false">
-                                    <span class="font-medium text-gray-900">
-                                        Firma
-                                    </span>
-                                    <span class="ml-6 flex items-center">
-                                        <!--
-                      Expand icon, show/hide based on section open state.
-
-                      Heroicon name: solid/plus-sm
-                    -->
-                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                            fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <!--
-                      Collapse icon, show/hide based on section open state.
-
-                      Heroicon name: solid/minus-sm
-                    -->
-                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                            fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </h3>
-                            <!-- Filter section, show/hide based on section state. -->
-                            <div class="pt-6" id="filter-section-1">
-                                <div class="space-y-4">
-                                        @foreach($companies as $company)
-                                        <div class="flex items-center">
-                                            <input id="filter-category-0" name="category[]" value="new-arrivals"
-                                                type="checkbox"
-                                                class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                            <label for="filter-category-0" class="ml-3 text-sm text-gray-600">
-                                                {{$company->short_name}}
-                                            </label>
-                                        </div>
-                                        @endforeach
+                        <x-filterBlock title="Firmy">
+                            @foreach($companies as $company)
+                                <div class="flex items-center">
+                                    <input id="filter-category-0" name="category[]" value="new-arrivals"
+                                        type="checkbox"
+                                        class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500 ring-0">
+                                    <label for="filter-category-0" class="ml-3 text-sm text-gray-600">
+                                        {{$company->short_name}}
+                                    </label>
                                 </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        </x-filterBlock>
                         @endif
                     </form>
 
@@ -561,16 +481,34 @@
                             @foreach($people as $person)
                                 <div class="w-full sm:w-1/2">
                                     
-                                    <div class="border rounded-md m-2 hover:bg-gray-50 cursor-pointer">
-                                        <div class="px-3 py-2 text-sm">
-                                            <p>{{$person->first_name}} {{$person->last_name}}</p>
-                                            @isset($person->company->id)
-                                            <p class="text-gray-500">{{$person->company->full_name}}</p>
-                                            <p class="text-gray-400 text-xs">{{$person->company->short_name}}</p>
-                                            @else
-                                            <p class="text-gray-400">-</p>
-                                            <p class="text-gray-400">--</p>
-                                            @endif
+                                    <div class="border rounded-md m-2">
+                                        <div class="px-3 py-2 text-sm flex justify-between items-center">
+                                            <div class="h-6">
+                                                <p>{{$person->first_name}} {{$person->last_name}}</p>
+                                            </div>
+                                   
+                                            <div
+                                            x-data="{ showDescription: false }" 
+                                            class="relative flex flex-row space-x-3">
+                                                @isset($person->description)
+                                                <div class="cursor-pointer" @click="showDescription = ! showDescription">  
+                                                    <x-heroicon-o-information-circle class="w-6 h-6 text-indigo-400"/>
+                                                </div> 
+                                                <div
+                                                x-show="showDescription"
+                                                @click.outside="showDescription = false"
+                                                x-cloak 
+                                                class="absolute right-0 mt-2 w-80 bg-white text-gray-500 text-xs border p-2 rounded-md">
+                                                    <h2 class="font-semibold border-b-2 border-indigo-300">Informacje dodatkowe</h2>
+                                                    <p class="mt-1 text-justify">
+                                                        {{$person->description}}
+                                                    </p>
+                                                </div>
+                                                @endif
+                                                
+                                                
+                                            </div>
+                                            
                                         </div>
 
                                         <div class="flex flex-col border-t-2 border-indigo-200 text-xs text-gray-500">
@@ -591,6 +529,25 @@
                                                     {{$person->phone2}}
                                                 </div>                                                
                                             </div>
+
+                                            <div class="px-3 py-2 flex items-center">
+                                                @isset($person->company->id)
+                                                <div>
+                                                    <x-heroicon-o-users class="w-5 h-5 mr-3 text-green-400"/>
+                                                </div>
+                                                <div>
+                                                    <p class="text-gray-500">{{$person->company->full_name}}</p>
+                                                </div> 
+                                                @else
+                                                <div>
+                                                    <x-heroicon-o-user class="w-5 h-5 mr-3 text-green-400"/>
+                                                </div>
+                                                <div>
+                                                    <p class="text-gray-500">[Bez firmy]</p>
+                                                </div> 
+                                                @endif
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -598,51 +555,6 @@
                           
                           </div>
 
-
-                        <div class="flex flex-wrap">
-                            @foreach($people as $person)
-
-                            
-
-                            <div class="border w-96 rounded-md m-2 text-sm shadow-sm hidden">
-                                <div class="rounded-t-md shadow-sm border-b px-3 py-2">
-                                    <a href="{{route('people.show', $person->id)}}" class="text-gray-600 hover:text-indigo-400 font-bold block">
-                                        {{$person->first_name}} {{$person->last_name}}
-                                    </a>
-                                    <span class="text-gray-500">
-                                        {{$person->email}}
-                                    </span>
-                                </div>
-                                @isset($person->company->id)
-                                <div class="px-3 border-b">
-                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-user-group class="w-5 h-5 inline-block" /></span>
-                                    <a href="{{route('companies.show', $person->company->id)}}">
-                                        <span class="text-gray-700">{{$person->company->full_name}}</span>
-                                    </a>
-                                </div>
-                                @endif
-                                @isset($person->phone1)
-                                <div class="px-3 border-b">
-                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-device-mobile class="w-5 h-5 inline-block" /></span>
-                                    <span class="text-gray-700">{{$person->phone1}}</span>
-                                </div>
-                                @endif
-                                @isset($person->phone2)
-                                <div class="px-3 border-b">
-                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-phone class="w-5 h-5 inline-block" /></span>
-                                    <span class="text-gray-700">{{$person->phone2}}</span>
-                                </div>
-                                @endif
-                                @isset($person->description)
-                                <div class="px-3">
-                                    <span class="border-r px-2 text-gray-500"><x-heroicon-o-information-circle class="w-5 h-5 inline-block" /></span>
-                                    <span class="text-gray-700">{{$person->description}}</span>
-                                </div>
-                                @endif
-                         
-                            </div>
-                            @endforeach
-                        </div>
                     </div>
                 </div>
             </section>
