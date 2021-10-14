@@ -459,14 +459,12 @@
                             </div>
                         </x-filterBlock>
                         @isset($companies)
-                        <x-filterBlock title="Firmy">
+                        <x-filterBlock title="Firmy" open="true">
                             @foreach($companies as $company)
                                 <div class="flex items-center">
-                                    <input id="filter-category-0" name="category[]" value="new-arrivals"
-                                        type="checkbox"
-                                        class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500 ring-0">
+                                    <input value="{{$company->id}}" wire:model="selected.{{$company->id}}" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500 ring-0">
                                     <label for="filter-category-0" class="ml-3 text-sm text-gray-600">
-                                        {{$company->short_name}}
+                                        {{$company->full_name}}
                                     </label>
                                 </div>
                             @endforeach
@@ -484,7 +482,7 @@
                                     <div class="border rounded-md m-2">
                                         <div class="px-3 py-2 text-sm flex justify-between items-center">
                                             <div class="h-6">
-                                                <p>{{$person->first_name}} {{$person->last_name}}</p>
+                                                <p>{{$loop->iteration}}. {{$person->first_name}} {{$person->last_name}}</p>
                                             </div>
                                    
                                             <div
