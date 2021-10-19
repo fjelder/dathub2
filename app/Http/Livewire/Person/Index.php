@@ -13,8 +13,10 @@ class Index extends Component
 
     public function render()
     {
+        if(collect($this->selected)->contains(false))
+            $this->selected = [];
         
-        if($selected[0] = null)
+        if(empty($this->selected))
             $people = Person::all();
         else{
             $people = Person::whereIn('company_id', $this->selected)

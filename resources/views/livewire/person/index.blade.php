@@ -476,6 +476,9 @@
                     <div class="lg:col-span-3">
 
                         <div class="flex flex-wrap">
+                            <pre>
+                            {{var_dump($selected)}}
+                        </pre>
                             @foreach($people as $person)
                                 <div class="w-full sm:w-1/2">
                                     
