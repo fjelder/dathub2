@@ -47,9 +47,11 @@
                     </div>
                 </header>
             @endif
-
+            
+            
             <!-- Page Content -->
             <main class="max-w-7xl mx-auto">
+           
             @if (session('status'))
                 <div class="hidden sm:block" aria-hidden="true">
                     <div class="sm:px-6 lg:px-8 pt-5">
@@ -65,5 +67,6 @@
         @stack('modals')
 
         @livewireScripts
+
     </body>
 </html>

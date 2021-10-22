@@ -15,7 +15,9 @@ class PersonController extends Controller
     public function index()
     {
         //
-        return view('person.index');
+        return view('person.index', [
+            'people' => Person::paginate(10)
+        ]);
     }
 
     /**

@@ -3,21 +3,29 @@
 namespace App\Http\Livewire\Person;
 
 use Livewire\Component;
+
+use Livewire\WithPagination;
 use App\Models\Company;
 use App\Models\Person;
-class Index extends Component
+
+class ShowPeople extends Component
 {
+    use WithPagination;
+
     public $search = '';
+    public $methodView = 'grid';
     public $sort = 'asc';
     public $selected = [];
 
     public function render()
     {
-        if(collect($this->selected)->contains(false))
-            $this->selected = [];
-        
+        $this->selected = array_filter($this->selected);        
         if(empty($this->selected))
-            $people = Person::all();
+            $people = Person::where(function($query){
+                $query->where('first_name', 'like', $this->search.'%')
+                    ->orWhere('last_name', 'like', $this->search.'%')
+                    ->orWhere('email', 'like', '%'.$this->search.'%');
+            })->get();
         else{
             $people = Person::whereIn('company_id', $this->selected)
             ->where(function($query){
@@ -25,7 +33,7 @@ class Index extends Component
                     ->orWhere('last_name', 'like', $this->search.'%')
                     ->orWhere('email', 'like', '%'.$this->search.'%');
             })
-            ->get();
+            ->paginate(10);
         }
         if($this->sort === 'asc')
             $people = $people->sortBy('last_name');

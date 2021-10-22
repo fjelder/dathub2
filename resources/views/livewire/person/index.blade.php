@@ -345,7 +345,7 @@
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative z-10 flex items-baseline justify-between pt-10 pb-6 border-b border-gray-200">
-                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Lista kontaktowa</h1>
+                <h1 class="text-2xl font-extrabold tracking-tight text-gray-700">Lista kontaktowa</h1>
 
                 <div class="flex items-center">
                     <div x-data="{openSortMenu: false}" class="relative inline-block text-left">
@@ -375,28 +375,31 @@
 
                                 <a href="#" class="{{$sort == 'asc' ? 'font-medium text-gray-900' : 'text-gray-500' }} block px-4 py-2 text-sm" role="menuitem"
                                     tabindex="-1" id="menu-item-0"
-                                    wire:click="$set('sort', 'asc')">
+                                    wire:click="$set('sort', 'asc')"
+                                    @click="openSortMenu = false">
                                     Alfabetycznie rosnąco
                                 </a>
 
                                 <a href="#" class="{{$sort == 'desc' ? 'font-medium text-gray-900' : 'text-gray-500' }} block px-4 py-2 text-sm" role="menuitem"    tabindex="-1" id="menu-item-1"
-                                    wire:click="$set('sort', 'desc')">
+                                    wire:click="$set('sort', 'desc')"
+                                    @click="openSortMenu = false">
                                     Alfabetycznie malejącą
                                 </a>
 
                             </div>
                         </div>
                     </div>
-
+                    @if($methodView == 'table')
                     <button type="button" class="p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500">
                         <span class="sr-only">View grid</span>
-                        <!-- Heroicon name: solid/view-grid -->
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                        </svg>
+                        <x-heroicon-s-view-grid class="w-5 h-5"/>
                     </button>
+                    @elseif($methodView == 'grid')
+                    <button type="button" class="p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">View table</span>
+                        <x-heroicon-o-table class="w-5 h-5"/>
+                    </button>
+                    @endif
                     <button type="button" class="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden">
                         <span class="sr-only">Filters</span>
                         <!-- Heroicon name: solid/filter -->
@@ -459,10 +462,10 @@
                             </div>
                         </x-filterBlock>
                         @isset($companies)
-                        <x-filterBlock title="Firmy" open="true">
+                        <x-filterBlock title="Firmy" open="false">
                             @foreach($companies as $company)
                                 <div class="flex items-center">
-                                    <input value="{{$company->id}}" wire:model="selected.{{$company->id}}" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500 ring-0">
+                                    <input value="{{$company->id}}" wire:model="selected.{{$company->id}}" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500 ring-0" checked="true">
                                     <label for="filter-category-0" class="ml-3 text-sm text-gray-600">
                                         {{$company->full_name}}
                                     </label>
@@ -476,85 +479,99 @@
                     <div class="lg:col-span-3">
 
                         <div class="flex flex-wrap">
-                            <pre>
-                            {{var_dump($selected)}}
-                        </pre>
-                            @foreach($people as $person)
-                                <div class="w-full sm:w-1/2">
+
+                            @if(count($people))
+                                @if($methodView == 'grid')
+                                @foreach($people as $person)
+                                    <div class="w-full sm:w-1/2">
+                                        
+                                        <div class="border rounded-md m-2">
+                                            <div class="px-3 py-2 text-sm flex justify-between items-center">
+                                                <div class="h-6">
+                                                    <a href="{{route('contacts.edit', $person->id)}}">
+                                                    <p>{{$loop->iteration}}. {{$person->first_name}} {{$person->last_name}}</p>
+                                                    </a>
+                                                </div>
                                     
-                                    <div class="border rounded-md m-2">
-                                        <div class="px-3 py-2 text-sm flex justify-between items-center">
-                                            <div class="h-6">
-                                                <p>{{$loop->iteration}}. {{$person->first_name}} {{$person->last_name}}</p>
-                                            </div>
-                                   
-                                            <div
-                                            x-data="{ showDescription: false }" 
-                                            class="relative flex flex-row space-x-3">
-                                                @isset($person->description)
-                                                <div class="cursor-pointer" @click="showDescription = ! showDescription">  
-                                                    <x-heroicon-o-information-circle class="w-6 h-6 text-indigo-400"/>
-                                                </div> 
                                                 <div
-                                                x-show="showDescription"
-                                                @click.outside="showDescription = false"
-                                                x-cloak 
-                                                class="absolute right-0 mt-2 w-80 bg-white text-gray-500 text-xs border p-2 rounded-md">
-                                                    <h2 class="font-semibold border-b-2 border-indigo-300">Informacje dodatkowe</h2>
-                                                    <p class="mt-1 text-justify">
-                                                        {{$person->description}}
-                                                    </p>
+                                                x-data="{ showDescription: false }" 
+                                                class="relative flex flex-row space-x-3">
+                                                    @isset($person->description)
+                                                    <div class="cursor-pointer" @click="showDescription = ! showDescription">  
+                                                        <x-heroicon-o-information-circle class="w-6 h-6 text-indigo-400"/>
+                                                    </div> 
+                                                    <div
+                                                    x-show="showDescription"
+                                                    @click.outside="showDescription = false"
+                                                    x-cloak 
+                                                    class="absolute right-0 mt-2 w-80 bg-white text-gray-500 text-xs border p-2 rounded-md">
+                                                        <h2 class="font-semibold border-b-2 border-indigo-300">Informacje dodatkowe</h2>
+                                                        <p class="mt-1 text-justify">
+                                                            {{$person->description}}
+                                                        </p>
+                                                    </div>
+                                                    @endif
+                                                    
+                                                    
                                                 </div>
-                                                @endif
                                                 
-                                                
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div class="flex flex-col border-t-2 border-indigo-200 text-xs text-gray-500">
-                                            <div class="px-3 py-2 flex items-center">
-                                                <div>
-                                                    <x-heroicon-o-mail class="w-5 h-5 mr-3 text-indigo-400"/>
-                                                </div>
-                                                <div class="">
-                                                    {{$person->email}}
-                                                </div>
-                                            </div>
-                                            <div class="px-3 py-2 flex items-center">
-                                                <div>
-                                                    <x-heroicon-o-phone class="w-5 h-5 mr-3 text-blue-400"/>
-                                                </div>
-                                                <div>
-                                                    {{$person->phone1}}</br>
-                                                    {{$person->phone2}}
-                                                </div>                                                
                                             </div>
 
-                                            <div class="px-3 py-2 flex items-center">
-                                                @isset($person->company->id)
-                                                <div>
-                                                    <x-heroicon-o-users class="w-5 h-5 mr-3 text-green-400"/>
+                                            <div class="flex flex-col border-t-2 border-indigo-200 text-xs text-gray-500">
+                                                <div class="px-3 py-2 flex items-center">
+                                                    <div>
+                                                        <x-heroicon-o-mail class="w-5 h-5 mr-3 text-indigo-400"/>
+                                                    </div>
+                                                    <div class="">
+                                                        {{$person->email}}
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <p class="text-gray-500">{{$person->company->full_name}}</p>
-                                                </div> 
-                                                @else
-                                                <div>
-                                                    <x-heroicon-o-user class="w-5 h-5 mr-3 text-green-400"/>
+                                                <div class="px-3 py-2 flex items-center">
+                                                    <div>
+                                                        <x-heroicon-o-phone class="w-5 h-5 mr-3 text-blue-400"/>
+                                                    </div>
+                                                    <div>
+                                                        {{$person->phone1}}</br>
+                                                        {{$person->phone2}}
+                                                    </div>                                                
                                                 </div>
-                                                <div>
-                                                    <p class="text-gray-500">[Bez firmy]</p>
-                                                </div> 
-                                                @endif
-                                            </div>
 
+                                                <div class="px-3 py-2 flex items-center">
+                                                    @isset($person->company->id)
+                                                    <div>
+                                                        <x-heroicon-o-users class="w-5 h-5 mr-3 text-green-400"/>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-gray-500">{{$person->company->full_name}}</p>
+                                                    </div> 
+                                                    @else
+                                                    <div>
+                                                        <x-heroicon-o-user class="w-5 h-5 mr-3 text-green-400"/>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-gray-500">[Bez firmy]</p>
+                                                    </div> 
+                                                    @endif
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
+                                    
+                                @endforeach
+                                @elseif($methodView == 'table')
+                                    <x-people.table />
+                                @endif
+                            @else
+                                <div class="text-sm block w-96 mx-auto mt-10 text-center">
+                                    <p class="font-medium">Brak kontaktów do wyświetlenia!</p>
+                                    <p class="text-red-400">Zmień kryteria wyszukiwania.</p>
                                 </div>
-                            @endforeach
-                          
+                            @endif
+
+                            
                           </div>
+
 
                     </div>
                 </div>
