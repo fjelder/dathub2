@@ -114,8 +114,8 @@
                 <tr class="w-full h-16 border-gray-300 border-b py-8">
                     <th
                         class="pl-8 text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">
-                        <input placeholder="check box" type="checkbox"
-                            class="cursor-pointer relative w-5 h-5 border rounded border-gray-400 bg-white dark:bg-gray-800 focus:outline-none focus:outline-none focus:ring-2  focus:ring-gray-400"
+                        <input placeholder="check box" type="checkbox" disabled="disabled"
+                            class="cursor-pointer relative w-5 h-5 border rounded border-gray-400 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2  focus:ring-gray-400"
                             onclick="checkAll(this)" />
                     </th>
                     <th
@@ -145,8 +145,7 @@
                     <th role="columnheader"
                         class="text-gray-600 dark:text-gray-400 pr-6 text-left text-sm tracking-normal leading-4">
                         Firma</th>
-                    <th
-                        class="text-gray-600 dark:text-gray-400 pr-6 text-left text-sm tracking-normal leading-4">
+                    <th class="text-gray-600 dark:text-gray-400 pr-6 text-left text-sm tracking-normal leading-4">
                         <div class="opacity-0 w-2 h-2 rounded-full bg-indigo-400"></div>
                     </th>
                     <td role="columnheader"
@@ -160,12 +159,12 @@
                     <td
                         class="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
                         <input placeholder="check box" type="checkbox"
-                            class="cursor-pointer relative w-5 h-5 border rounded border-gray-400 bg-white dark:bg-gray-800 focus:outline-none focus:outline-none focus:ring-2  focus:ring-gray-400"
+                            class="cursor-pointer relative w-5 h-5 border rounded border-gray-400 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2  focus:ring-gray-400"
                             onclick="tableInteract(this)" />
                     </td>
                     <td
                         class="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                        {{$loop->iteration}}
+                        {{ $people->firstItem() + $loop->index }}
                     </td>
                     <td
                         class="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
@@ -186,33 +185,34 @@
                         {{$person->company->full_name}}
                     </td>
                     <td class="pr-6">
-                            <x-heroicon-o-information-circle class="w-6 h-6 text-indigo-500 cursor-pointer" />
+                        <x-heroicon-o-information-circle class="w-6 h-6 text-indigo-500 cursor-pointer" />
                     </td>
                     <td class="pr-8 relative" x-data="{openDropdownMenu: false}">
 
-                            <button aria-label="dropdown" role="button"
-                                class="text-gray-500 rounded cursor-pointer border border-transparent  focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400"
-                                @click="openDropdownMenu = true">
-                                <x-heroicon-o-dots-vertical class="w-7 h-7" />
-                            </button>
-                            <div 
-                            x-show="openDropdownMenu"
-                            @click.away="openDropdownMenu = false"
+                        <button aria-label="dropdown" role="button"
+                            class="text-gray-500 rounded cursor-pointer border border-transparent  focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400"
+                            @click="openDropdownMenu = true">
+                            <x-heroicon-o-dots-vertical class="w-7 h-7" />
+                        </button>
+                        <div x-show="openDropdownMenu" @click.away="openDropdownMenu = false"
                             class="mt-1 absolute left-0 -ml-12 shadow-md z-10 w-32">
-                                <ul class="bg-white dark:bg-gray-800 shadow rounded py-1">
-                                    <li
-                                        class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">
-                                        Edytuj</li>
-                                    <li
-                                        class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">
-                                        Usuń</li>
-                                </ul>
-                            </div>
-
+                            <ul class="bg-white dark:bg-gray-800 shadow rounded py-1">
+                                <li
+                                    class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">
+                                    Edytuj</li>
+                                <li
+                                    class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">
+                                    Usuń</li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+    <div class="p-4">
+        {{$people->links()}}
     </div>
 </div>

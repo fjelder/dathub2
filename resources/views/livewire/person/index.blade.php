@@ -477,7 +477,7 @@
 
                     <!-- Product grid -->
                     <div class="lg:col-span-3">
-
+                        
                         <div class="flex flex-wrap">
 
                             @if(count($people))
