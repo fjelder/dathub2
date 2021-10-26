@@ -19,18 +19,21 @@ class ContactTable extends DataTableComponent
             Column::make('Nazwisko', 'last_name')
             ->sortable()
             ->searchable(),
+            Column::make('E-mail', 'email')
+            ->searchable(),
+            Column::make('Telefon 1', 'phone1')
+            ->searchable(),
+            Column::make('Telefon 2', 'phone2')
+            ->searchable(),
+            Column::make('Firma', 'company.full_name')
+            ->searchable(),
+            
         ];
     }
 
     public function query(): Builder
     {
         return Person::query();
-    }
-
-    public function rowView(): string
-    {
-        // Becomes /resources/views/location/to/my/row.blade.php
-        return 'person.row';
     }
 
 }

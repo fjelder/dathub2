@@ -1,9 +1,20 @@
+@props([
+'title',
+'active'
+])
+
+@php
+$classes = ($active ?? false)
+? 'border-indigo-600'
+: 'border-transparent';
+@endphp
+
 <div class="flex" x-data="{open: false}">
 
     <div class="relative flex">
         <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
         <button type="button"
-            class="text-gray-700 hover:text-gray-800 relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px"
+            class="{{$classes}} text-gray-700 hover:text-gray-800 relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px"
             aria-expanded="false" @click="open = ! open"
             :class="open ? 'border-indigo-600 text-indigo-300' : 'border-transparent'">
             {{$title}}

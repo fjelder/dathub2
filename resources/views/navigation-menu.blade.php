@@ -11,7 +11,7 @@
             <!-- Logo -->
             <div class="ml-4 flex lg:ml-0">
                 <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-11 w-auto" />
+                    <x-jet-application-mark class="block h-11 w-auto" />
                 </a>
             </div>
 
@@ -21,157 +21,156 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('contacts.index') }}" :active="request()->routeIs('contacts.index')">
-                        Kontakty
-                    </x-jet-nav-link>
                     @if(Auth::user()->is_admin)
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         {{ __('Users') }}
                     </x-jet-nav-link>
                     @endif
 
-                    <x-flayout-menu title="Dane">
-                    <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
-                    <div class="col-start-2 grid grid-cols-2 gap-x-8">
-                        <div class="group relative text-base sm:text-sm">
-                            <div
-                                class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg"
-                                    alt="Models sitting back to back, wearing Basic Tee in black and bone."
-                                    class="object-center object-cover">
+                    <x-flayout-menu title="Dane" :active="request()->is('data/*')">
+                        <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
+                            <div class="col-start-2 grid grid-cols-2 gap-x-8">
+                                <div class="group relative text-base sm:text-sm">
+                                    <div
+                                        class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg"
+                                            alt="Models sitting back to back, wearing Basic Tee in black and bone."
+                                            class="object-center object-cover">
+                                    </div>
+                                    <a href="#" class="mt-6 block font-medium text-gray-900">
+                                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                        New Arrivals
+                                    </a>
+                                    <p aria-hidden="true" class="mt-1">Shop now</p>
+                                </div>
+
+                                <div class="group relative text-base sm:text-sm">
+                                    <div
+                                        class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg"
+                                            alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees."
+                                            class="object-center object-cover">
+                                    </div>
+                                    <a href="#" class="mt-6 block font-medium text-gray-900">
+                                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                        Basic Tees
+                                    </a>
+                                    <p aria-hidden="true" class="mt-1">Shop now</p>
+                                </div>
                             </div>
-                            <a href="#" class="mt-6 block font-medium text-gray-900">
-                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                New Arrivals
-                            </a>
-                            <p aria-hidden="true" class="mt-1">Shop now</p>
-                        </div>
+                            <div class="row-start-1 grid grid-cols-2 gap-y-10 gap-x-8 text-sm">
+                                <div>
+                                    <p id="Clothing-heading" class="font-medium text-gray-900">
+                                        Kontakty
+                                    </p>
+                                    <ul role="list" aria-labelledby="Clothing-heading"
+                                        class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                                        <li class="flex">
+                                            <x-ui.link href="{{ route('contacts.index') }}"
+                                                :active="request()->routeIs('contacts.index')">
+                                                Lista osób
+                                            </x-ui.link>
+                                        </li>
 
-                        <div class="group relative text-base sm:text-sm">
-                            <div
-                                class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg"
-                                    alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees."
-                                    class="object-center object-cover">
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Lista firm
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <x-ui.link href="{{ route('contacts.create') }}"
+                                                :active="request()->routeIs('contacts.create')">
+                                                Nowa osoba
+                                            </x-ui.link>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Nowa firma
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p id="Accessories-heading" class="font-medium text-gray-900">
+                                        Obiekty
+                                    </p>
+                                    <ul role="list" aria-labelledby="Accessories-heading"
+                                        class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Linie kolejowe
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Stacje kolejowe
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Posterunki odgałęźne
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Przystanki osobowe
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Przejazdy kolejowo - drogowe
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <p id="Brands-heading" class="font-medium text-gray-900">
+                                        Brands
+                                    </p>
+                                    <ul role="list" aria-labelledby="Brands-heading"
+                                        class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Full Nelson
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                My Way
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Re-Arranged
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Counterfeit
+                                            </a>
+                                        </li>
+
+                                        <li class="flex">
+                                            <a href="#" class="hover:text-gray-800">
+                                                Significant Other
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <a href="#" class="mt-6 block font-medium text-gray-900">
-                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                Basic Tees
-                            </a>
-                            <p aria-hidden="true" class="mt-1">Shop now</p>
                         </div>
-                    </div>
-                    <div class="row-start-1 grid grid-cols-2 gap-y-10 gap-x-8 text-sm">
-                        <div>
-                            <p id="Clothing-heading" class="font-medium text-gray-900">
-                                Kontakty
-                            </p>
-                            <ul role="list" aria-labelledby="Clothing-heading"
-                                class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
-                                <li class="flex">
-                                    <x-ui.link href="{{ route('contacts.index') }}">
-                                        Lista osób
-                                    </x-ui.link>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Lista firm
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <x-ui.link :href="{{ route('users.create') }}" >
-                                        Nowa osoba
-                                    </x-ui.link>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Nowa firma
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <p id="Accessories-heading" class="font-medium text-gray-900">
-                                Obiekty
-                            </p>
-                            <ul role="list" aria-labelledby="Accessories-heading"
-                                class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Linie kolejowe
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Stacje kolejowe
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Posterunki odgałęźne
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Przystanki osobowe
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Przejazdy kolejowo - drogowe
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                        <div>
-                            <p id="Brands-heading" class="font-medium text-gray-900">
-                                Brands
-                            </p>
-                            <ul role="list" aria-labelledby="Brands-heading"
-                                class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Full Nelson
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        My Way
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Re-Arranged
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Counterfeit
-                                    </a>
-                                </li>
-
-                                <li class="flex">
-                                    <a href="#" class="hover:text-gray-800">
-                                        Significant Other
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                     </x-flayout-menu>
 
 
@@ -180,20 +179,10 @@
 
             <div class="ml-auto flex items-center">
                 <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                    <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
+                    <span class="text-sm font-medium text-gray-700 hover:text-gray-800">
+                        {{ now()->translatedFormat('D, j F Y\r.') }}
+                    </span>
                     <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                    <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Create account</a>
-                </div>
-
-                <div class="hidden lg:ml-8 lg:flex">
-                    <a href="#" class="text-gray-700 hover:text-gray-800 flex items-center">
-                        <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt=""
-                            class="w-5 h-auto block flex-shrink-0">
-                        <span class="ml-3 block text-sm font-medium">
-                            CAD
-                        </span>
-                        <span class="sr-only">, change currency</span>
-                    </a>
                 </div>
 
                 <!-- Search -->
@@ -210,7 +199,7 @@
                 </div>
 
                 <!-- Cart -->
-                <div class="ml-4 flow-root lg:ml-6">
+                <div class="ml-4 flow-root lg:ml-6 hidden">
                     <a href="#" class="group -m-2 p-2 flex items-center">
                         <!-- Heroicon name: outline/shopping-bag -->
                         <svg class="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
@@ -219,7 +208,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
-                        <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                        <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">10</span>
                         <span class="sr-only">items in cart, view bag</span>
                     </a>
                 </div>

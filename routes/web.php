@@ -30,11 +30,12 @@ Route::get('/users2', function () {
     return view('dashboard', ['users' => $users]);
 })->name('users');
 
-Route::resources([
-    'contacts' => PersonController::class,
-    'companies' => CompanyController::class
-]);
-
+Route::prefix('data')->group(function () {
+    Route::resources([
+        'contacts' => PersonController::class,
+        'companies' => CompanyController::class
+    ]);
+});
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::resources([

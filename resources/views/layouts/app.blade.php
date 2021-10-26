@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     <!-- Styles -->
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    {{--
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 
@@ -57,6 +58,23 @@
         <header class="relative bg-white">
             @livewire('navigation-menu')
         </header>
+
+        @if (isset($header) || isset($breadcrumbs))
+        <div class="bg-white shadowa">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between">
+                <div>
+                    @if(isset($header))
+                    <h2>{{ $header }}</h2>
+                    @endif
+                </div>
+                <div>
+                    @if(isset($breadcrumbs))
+                    {{ $breadcrumbs }}
+                    @endif
+                </div>
+            </div>
+        </div>
+        @endif
 
         <main>
             {{$slot}}
