@@ -712,5 +712,8 @@
     "Zip \/ Postal Code": "Kod pocztowy",
     "Åland Islands": "Wyspy Alandzkie",
     "Clear": "Wyczyść",
-    "Applied Sorting": "Zastosowane sortowanie"
+    "Applied Sorting": "Zastosowane sortowanie",
+    "Applied Filters": "Zastosowane filtry",
+    "Filters": "Filtry",
+    "Bulk Actions": "Akcje zbiorcze"
 }

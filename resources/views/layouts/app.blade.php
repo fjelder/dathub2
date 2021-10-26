@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     <!-- Styles -->
-    {{--
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 
@@ -60,7 +60,7 @@
         </header>
 
         @if (isset($header) || isset($breadcrumbs))
-        <div class="bg-white shadowa">
+        <div class="bg-white mt-2">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between">
                 <div>
                     @if(isset($header))
