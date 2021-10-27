@@ -15,6 +15,15 @@ class ContactTable extends DataTableComponent
 
     public string $defaultSortColumn = 'id';
     public string $defaultSortDirection = 'desc';
+    public bool $columnSelect = false;
+
+    // To show/hide the modal
+    public bool $viewingModal = false;
+
+    // The information currently being displayed in the modal
+    public $currentModal;
+
+
 
     public array $bulkActions = [
         'exportSelected' => 'Export',
@@ -36,17 +45,46 @@ class ContactTable extends DataTableComponent
 
     public function filters(): array
     {
-        $company = Company::pluck('short_name', 'id')->toArray();
+        $company = Company::pluck('full_name', 'id')->toArray();
         // dd($company);
         return [
             'company' => Filter::make('Firma')
                 ->select(array_merge([
-                    '' => 'Wszystkie'
+                    0 => 'Wszystkie',
                 ], $company))
                 ];
 
     }
 
+    public function getTableRowUrl(): string
+    {
+        // return route('contacts.show', $row);
+        return '#';
+    }
+
+    public function setTableRowAttributes($row): array
+    {
+        return ['wire:click.prevent' => 'viewModal('.$row->id.')'];
+    }
+
+    public function viewModal($modelId): void
+    {
+        $this->viewingModal = true;
+        $this->currentModal = Person::findOrFail($modelId);
+    }
+    
+    
+    public function resetModal(): void
+    {
+        $this->reset('viewingModal', 'currentModal');
+    }
+
+    public function modalsView(): string
+    {
+        return 'person.modal-form';
+    }
+
+    
     public function columns(): array
     {
         return [
@@ -73,7 +111,7 @@ class ContactTable extends DataTableComponent
     public function query(): Builder
     {
         return Person::query()
-            ->when($this->getFilter('company'), fn ($query, $type) => $query->where('company_id', $type));
+            ->when($this->getFilter('company'), fn ($query, $company) => $query->where('company_id', $company));
     }
 
 }

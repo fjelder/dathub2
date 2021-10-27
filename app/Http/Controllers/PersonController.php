@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -28,6 +29,9 @@ class PersonController extends Controller
     public function create()
     {
         //
+        return view('person.create', [
+            'companies' => Company::all()
+        ]);
     }
 
     /**

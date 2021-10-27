@@ -24,3 +24,9 @@ Breadcrumbs::for('contacts', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Kontakty', route('contacts.index'));
 });
+
+// Home > Contacts > Create
+Breadcrumbs::for('contactsCreate', function (BreadcrumbTrail $trail) {
+    $trail->parent('contacts');
+    $trail->push('Utwórz', route('contacts.create'));
+});

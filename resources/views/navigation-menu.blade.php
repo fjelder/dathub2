@@ -178,7 +178,7 @@
 
             <div class="ml-auto flex items-center">
                 <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                    <span class="text-sm font-medium text-gray-700 hover:text-gray-800">
+                    <span class="text-sm font-normal text-gray-700 hover:text-gray-800">
                         {{ now()->translatedFormat('D, j F Y\r.') }}
                     </span>
                     <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
