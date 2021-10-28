@@ -88,10 +88,7 @@ class ContactTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Imię', 'first_name')
-            ->sortable()
-            ->searchable(),
-            Column::make('Nazwisko', 'last_name')
+            Column::make('Imię i nazwisko', 'name')
             ->sortable()
             ->searchable(),
             Column::make('E-mail', 'email')

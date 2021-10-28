@@ -1,6 +1,6 @@
 @if (count($breadcrumbs))
 
-    <nav class="flex items-center text-gray-500 text-sm font-medium sm:space-x-2 whitespace-nowrap">
+    <nav class="flex items-center flex-wrap text-gray-500 text-sm font-medium sm:space-x-2 whitespace-nowrap">
         @foreach ($breadcrumbs as $breadcrumb)
 
             @if ($breadcrumb->url && !$loop->last)

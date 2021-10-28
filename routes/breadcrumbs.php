@@ -1,5 +1,6 @@
 <?php
 use App\Models\User;
+use App\Models\Person;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 // Home
@@ -30,3 +31,16 @@ Breadcrumbs::for('contactsCreate', function (BreadcrumbTrail $trail) {
     $trail->parent('contacts');
     $trail->push('Utwórz', route('contacts.create'));
 });
+
+// Home > Contacts > [name]
+Breadcrumbs::for('contactsName', function (BreadcrumbTrail $trail, Person $person) {
+    $trail->parent('contacts');
+    $trail->push($person->name, route('contacts.edit', $person->id));
+});
+
+// Home > Contacts > [name] > edit
+Breadcrumbs::for('contactsNameEdit', function (BreadcrumbTrail $trail, Person $person) {
+    $trail->parent('contactsName', $person);
+    $trail->push('Edytuj', route('contacts.edit', $person->id));
+});
+

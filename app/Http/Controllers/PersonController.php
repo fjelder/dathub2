@@ -29,8 +29,9 @@ class PersonController extends Controller
     public function create()
     {
         //
+        $companies = Company::pluck('full_name', 'id')->toArray();
         return view('person.create', [
-            'companies' => Company::all()
+            'companies' => $companies
         ]);
     }
 
@@ -62,9 +63,9 @@ class PersonController extends Controller
      * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function edit(Person $person)
+    public function edit(Person $contact)
     {
-        //
+        return view('person.edit', ['person'=>$contact]);
     }
 
     /**
