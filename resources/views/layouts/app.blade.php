@@ -55,7 +55,7 @@
         <div>
             <x-mobile-menu />
         </div>
-
+        <x-jet-banner />
         <header class="relative bg-white">
             @livewire('navigation-menu')
         </header>

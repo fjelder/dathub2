@@ -9,7 +9,7 @@
 
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        @livewire('person.create-edit-person', ['mode' => 'edit', 'state' => $person])
+        @livewire('person.create-edit-person', ['mode' => 'update', 'state' => $person])
     </div>
 
 </x-app-layout>

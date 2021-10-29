@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Livewire\Person;
-
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Person;
 use App\Models\Company;
 class CreateEditPerson extends Component
 {
     public $companies;
-    public $mode = 'aaa';
+    public $mode;
     public Person $state;
 
     protected $rules = [
@@ -22,15 +22,27 @@ class CreateEditPerson extends Component
 
     ];
 
-    public function edit()
+    public function update()
     {
+        $this->validate();
         $this->state->save();
         $this->emit('saved');
+        session()->flash('flash.banner', 'Kontakt został pomyślnie zaktualizowany.');
+
+        session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('contacts.index'));
     }
 
     public function create()
     {
-        dd('create');
+        $this->validate();
+        $this->state->created_by_user = Auth::user()->id;
+        $this->state->save();
+        $this->emit('saved');
+        session()->flash('flash.banner', 'Kontakt został pomyślnie zapisany.');
+
+        session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('contacts.index'));
     }
 
     public function mount()

@@ -73,8 +73,19 @@
     </x-slot>
 
     <x-slot name="footer">
-        <x-jet-secondary-button wire:click="resetModal" wire:loading.attr="disabled">
-            Gotowe
-        </x-jet-secondary-button>
+      @isset($currentModal)
+      <div class="flex justify-between">
+          
+          <a href="{{ route('contacts.edit', $currentModal->id) }}">
+            <x-jet-secondary-button>
+              Edytuj
+            </x-jet-secondary-button>
+          </a>
+          
+          <x-jet-secondary-button wire:click="resetModal" wire:loading.attr="disabled">
+              Gotowe
+          </x-jet-secondary-button>
+      </div>
+      @endif
     </x-slot>
 </x-jet-dialog-modal>
