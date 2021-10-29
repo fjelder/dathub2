@@ -22,6 +22,17 @@ class CreateEditPerson extends Component
 
     ];
 
+    public function edit()
+    {
+        $this->state->save();
+        $this->emit('saved');
+    }
+
+    public function create()
+    {
+        dd('create');
+    }
+
     public function mount()
     {
         $this->companies = Company::pluck('full_name', 'id')->toArray();

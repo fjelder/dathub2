@@ -12,12 +12,12 @@ div h2 {
 }
 
 p.logo {
-    font-family: 'Pacifico', cursive;
-    @apply text-2xl text-gray-300 tracking-wide;
+    font-family: cursive;
+    @apply text-2xl text-indigo-800 tracking-wide;
 }
 
 p.logo.login {
-    @apply text-3xl;
+    @apply text-3xl font-semibold;
 }
 
 table thead tr th {

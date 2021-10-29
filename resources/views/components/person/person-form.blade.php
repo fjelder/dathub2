@@ -13,15 +13,15 @@
 
 <!-- Phone1 -->
 <div class="col-span-6 md:col-span-4">
-        <x-jet-label for="email" value="Telefon 1" />
-        <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.phone1" />
+        <x-jet-label for="phone1" value="Telefon 1" />
+        <x-jet-input type="text" class="mt-1 block w-full" wire:model.defer="state.phone1" />
         <x-jet-input-error for="phone1" class="mt-2" />
 </div>
 
 <!-- Phone2 -->
 <div class="col-span-6 md:col-span-4">
-        <x-jet-label for="email" value="Telefon 2" />
-        <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.phone2" />
+        <x-jet-label for="phone2" value="Telefon 2" />
+        <x-jet-input type="text" class="mt-1 block w-full" wire:model.defer="state.phone2" />
         <x-jet-input-error for="phone2" class="mt-2" />
 </div>
 

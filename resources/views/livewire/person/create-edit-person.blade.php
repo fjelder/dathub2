@@ -1,5 +1,5 @@
 <div>
-    <x-jet-form-section submit="createNewContact">
+    <x-jet-form-section :submit="$mode">
         <x-slot name="title">
             Dane osobowe
         </x-slot>
@@ -23,8 +23,10 @@
         </x-slot>
     
         <x-slot name="actions">
-    
-            <x-jet-button wire:loading.attr="disabled" wire:target="">
+            <x-jet-action-message class="mr-3" on="saved">
+                {{ __('Saved.') }}
+            </x-jet-action-message>
+            <x-jet-button wire:loading.attr="disabled" wire:target="edit">
                 {{ __('Save') }}
             </x-jet-button>
         </x-slot>
