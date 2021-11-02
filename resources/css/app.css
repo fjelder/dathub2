@@ -3,6 +3,7 @@
 @import 'tailwindcss/utilities';
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
+
 .main-menu a {
     @apply tracking-wide;
 }
@@ -17,7 +18,8 @@ p.logo {
 }
 
 p.logo.login {
-    @apply text-3xl font-semibold;
+    @apply text-3xl font-medium;
+    font-family: 'Lexend Peta', sans-serif;
 }
 
 table thead tr th {
