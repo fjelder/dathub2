@@ -9,13 +9,20 @@ use App\Models\Date\RailwayLine;
 
 class RailwayLineTable extends DataTableComponent
 {
+    protected $listeners = [
+        'refresh-RailwayLineTable' => '$refresh',
+    ];
+
+    public string $defaultSortColumn = 'number';
+    public string $defaultSortDirection = 'asc';
+
 
     public function columns(): array
     {
         return [
-            Column::make('Numer linii', 'number', ),
+            Column::make('Numer linii', 'number')->sortable(),
             Column::make('Początek', 'start')->searchable(),
-            Column::make('Koniec', 'end'),
+            Column::make('Koniec', 'end')->searchable(),
         ];
     }
 

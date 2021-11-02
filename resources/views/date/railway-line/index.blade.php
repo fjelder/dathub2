@@ -14,31 +14,9 @@
 <div>
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <div class="md:col-span-1">
-        <div class="px-4 sm:px-0">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Nowa linia kolejowa</h3>
-          <p class="mt-1 text-sm text-gray-600">
-            Zdefiniuj nową linię kolejową. Należy wypełnić wszystkie pola formularza.
-          </p>
-        </div>
-        <div class="mt-5">
-            <x-jet-label value="Numer linii" />
-            <x-jet-input type="text" wire:model="state.number" />
-        </div>
-        <div class="mt-5">
-            <x-jet-label value="Początek" />
-            <x-jet-input type="text" wire:model="state.start" />
-        </div>
-        <div class="mt-5">
-            <x-jet-label value="Koniec" />
-            <x-jet-input type="text" wire:model="state.end" />
-        </div>
-        <div class="mt-5">
-            <x-jet-secondary-button>
-                Zapisz
-            </x-jet-secondary-button>
-        </div>
+        @livewire('date.railway-line-crud', ['mode' => 'save'])
       </div>
-      <div class="mt-5 md:mt-0 md:col-span-2">
+      <div class="mt-5 md:mt-0 md:col-span-2 row-start-1">
         @livewire('date.railway-line-table')
       </div>
     </div>

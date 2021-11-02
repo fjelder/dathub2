@@ -23,5 +23,15 @@
 			"number" : 6,
 			"start" : "Zielonka",
 			"end" : "Kuźnica Białostocka"
+		},
+        {
+			"number" : 353,
+			"start" : "Poznań Wschód",
+			"end" : "Skandawa"
+		},
+        {
+			"number" : 14,
+			"start" : "łódź Kaliska",
+			"end" : "Tuplice"
 		}
 ]
