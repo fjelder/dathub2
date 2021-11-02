@@ -1,0 +1,27 @@
+[
+		{
+			"number" : 1,
+			"start" : "Warszawa Zachodnia",
+			"end" : "Katowice"
+		},
+        {
+			"number" : 2,
+			"start" : "Warszawa Zachodnia",
+			"end" : "Terespol"
+		},
+        {
+			"number" : 3,
+			"start" : "Warszawa Zachodnia",
+			"end" : "Kunowice"
+		},
+        {
+			"number" : 4,
+			"start" : "Grodzisk Mazowiecki",
+			"end" : "Zawiercie"
+		},
+        {
+			"number" : 6,
+			"start" : "Zielonka",
+			"end" : "Kuźnica Białostocka"
+		}
+]

@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Contracts') }}
+                    </x-jet-nav-link>
                     @if(Auth::user()->is_admin)
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         {{ __('Users') }}
@@ -29,7 +32,7 @@
 
                     <x-flayout-menu title="Dane" :active="request()->is('data/*')">
                         <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
-                            <div class="col-start-2 grid grid-cols-2 gap-x-8">
+                            <div class="col-start-2 grid2 grid-cols-2 gap-x-8 hidden">
                                 <div class="group relative text-base sm:text-sm">
                                     <div
                                         class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
@@ -100,9 +103,10 @@
                                     <ul role="list" aria-labelledby="Accessories-heading"
                                         class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                         <li class="flex">
-                                            <a href="#" class="hover:text-gray-800">
+                                            <x-ui.link href="{{ route('railwayLines', []) }}"
+                                                :active="request()->routeIs('railwayLines')">
                                                 Linie kolejowe
-                                            </a>
+                                            </x-ui.link>
                                         </li>
 
                                         <li class="flex">
@@ -134,37 +138,19 @@
 
                                 <div>
                                     <p id="Brands-heading" class="font-medium text-gray-900">
-                                        Brands
+                                        Dane systemowe
                                     </p>
                                     <ul role="list" aria-labelledby="Brands-heading"
                                         class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                         <li class="flex">
                                             <a href="#" class="hover:text-gray-800">
-                                                Full Nelson
+                                                Branże
                                             </a>
                                         </li>
 
                                         <li class="flex">
                                             <a href="#" class="hover:text-gray-800">
-                                                My Way
-                                            </a>
-                                        </li>
-
-                                        <li class="flex">
-                                            <a href="#" class="hover:text-gray-800">
-                                                Re-Arranged
-                                            </a>
-                                        </li>
-
-                                        <li class="flex">
-                                            <a href="#" class="hover:text-gray-800">
-                                                Counterfeit
-                                            </a>
-                                        </li>
-
-                                        <li class="flex">
-                                            <a href="#" class="hover:text-gray-800">
-                                                Significant Other
+                                                Stadium projektowe
                                             </a>
                                         </li>
                                     </ul>

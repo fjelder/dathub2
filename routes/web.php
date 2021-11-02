@@ -35,6 +35,9 @@ Route::prefix('data')->group(function () {
         'contacts' => PersonController::class,
         'companies' => CompanyController::class
     ]);
+    Route::get('lines', function(){
+        return view('date.railway-line.index');
+    })->name('railwayLines');
 });
 
 Route::middleware(['isAdmin'])->group(function () {

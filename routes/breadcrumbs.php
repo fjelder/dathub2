@@ -44,3 +44,11 @@ Breadcrumbs::for('contactsNameEdit', function (BreadcrumbTrail $trail, Person $p
     $trail->push('Edytuj', route('contacts.edit', $person->id));
 });
 
+
+// Home > RailwayLine
+Breadcrumbs::for('railwayLine', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Linie kolejowe');
+});
+
+
