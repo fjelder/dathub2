@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@400;500;600&display=swap">
     <!-- Styles -->
 
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -33,8 +32,7 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body x-data="{ mobileMenuOpen: false }">
-
+<body x-data="{ mobileMenuOpen: false }" class="antialiased">
     <!--
   This example requires Tailwind CSS v2.0+ 
   
