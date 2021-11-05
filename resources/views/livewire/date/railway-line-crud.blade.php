@@ -1,7 +1,7 @@
 <div>
-    <x-jet-form-section :submit="$mode">
+    <x-jet-form-section :submit="$mode" display="horizontal">
         <x-slot name="title">
-            Dane osobowe
+            Nowa linia kolejowa
         </x-slot>
     
         <x-slot name="description">
@@ -10,7 +10,7 @@
                     Wprowadz zmiany w danych kontaktowych.   
                     @break
                 @case('create')
-                    Wprowadz wszystkie niezbędne dane kontaktowe.
+                    Zdefiniuj nową linię kolejową. Należy wypełnić wszystkie pola formularza.
                     @break
                 @default
                     
@@ -19,7 +19,23 @@
         </x-slot>
     
         <x-slot name="form">
-            forms
+            <div class="col-span-6">
+                <x-jet-label for="number" value="Numer linii" />
+                <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.number" autocomplete="number" />
+                <x-jet-input-error for="state.number" class="mt-2" />
+            </div>
+
+            <div class="col-span-6">
+                <x-jet-label for="start" value="Początek linii" />
+                <x-jet-input id="start" type="text" class="mt-1 block w-full" wire:model.defer="state.start" autocomplete="start" />
+                <x-jet-input-error for="state.start" class="mt-2" />
+            </div>
+
+            <div class="col-span-6">
+                <x-jet-label for="end" value="Początek linii" />
+                <x-jet-input id="end" type="text" class="mt-1 block w-full" wire:model.defer="state.end" autocomplete="end" />
+                <x-jet-input-error for="state.end" class="mt-2" />
+            </div>
         </x-slot>
     
         <x-slot name="actions">
@@ -35,31 +51,3 @@
     <x-jet-section-border />
 </div>
 
-<div>
-    <div class="px-4 sm:px-0">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">Nowa linia kolejowa</h3>
-        <p class="mt-1 text-sm text-gray-600">
-          Zdefiniuj nową linię kolejową. Należy wypełnić wszystkie pola formularza.
-        </p>
-      </div>
-      <div class="mt-5">
-          <x-jet-label value="Numer linii" />
-          <x-jet-input type="text" wire:model.defer="state.number"/>
-      </div>
-      <div class="mt-5">
-          <x-jet-label value="Początek" />
-          <x-jet-input type="text" wire:model="state.start" />
-      </div>
-      <div class="mt-5">
-          <x-jet-label value="Koniec" />
-          <x-jet-input type="text" wire:model="state.end" />
-      </div>
-      <div class="mt-5">
-        <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}..
-        </x-jet-action-message>
-          <x-jet-button wire:click="save">
-              Zapisz
-          </x-jet-button>
-      </div>
-</div>

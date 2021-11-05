@@ -12,12 +12,12 @@ class RailwayLineCrud extends Component
 
     protected $rules = [
 
-        'state.number' => '',
-        'state.start' => '',
-        'state.end' => ''
+        'state.number' => 'numeric|required',
+        'state.start' => 'required',
+        'state.end' => 'required'
     ];
 
-    public function save()
+    public function create()
     {
         $this->validate();
         $this->state->save();
@@ -25,8 +25,19 @@ class RailwayLineCrud extends Component
         $this->emit('refresh-RailwayLineTable');
     }
 
+    public function edit($id)
+    {
+        dd($id);
+    }
+
+    public function update()
+    {
+
+    }
+
     public function mount()
     {
+        $this->mode = 'create';
         $this->state = RailwayLine::where('id', 5)->get()->first();
     }
 
