@@ -13,8 +13,8 @@ class RailwayLineTable extends DataTableComponent
         'refresh-RailwayLineTable' => '$refresh',
     ];
 
-    public string $defaultSortColumn = 'number';
-    public string $defaultSortDirection = 'asc';
+    public string $defaultSortColumn = 'updated_at';
+    public string $defaultSortDirection = 'desc';
 
 
     public function columns(): array
@@ -23,6 +23,11 @@ class RailwayLineTable extends DataTableComponent
             Column::make('Numer linii', 'number')->sortable(),
             Column::make('Początek', 'start')->searchable(),
             Column::make('Koniec', 'end')->searchable(),
+            Column::make('/-/', 'id')
+            ->format(function($value) {
+                return '<a href="" wire:click="update('.$value.')">Edit</a>';
+            })
+            ->asHtml()
         ];
     }
 

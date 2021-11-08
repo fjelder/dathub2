@@ -28,7 +28,6 @@ class CreateEditPerson extends Component
         $this->state->save();
         $this->emit('saved');
         session()->flash('flash.banner', 'Kontakt został pomyślnie zaktualizowany.');
-
         session()->flash('flash.bannerStyle', 'success');
         return redirect(route('contacts.index'));
     }

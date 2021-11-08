@@ -5,29 +5,37 @@ namespace App\Http\Livewire\Date;
 use Livewire\Component;
 use App\Models\Date\RailwayLine;
 
+use Illuminate\Support\Str;
+
 class RailwayLineCrud extends Component
 {
-    public $state;
+    public $line;
     public $mode;
 
     protected $rules = [
 
-        'state.number' => 'numeric|required',
-        'state.start' => 'required',
-        'state.end' => 'required'
+        'line.number' => 'required|numeric|unique:railway_lines,number',
+        'line.start' => 'required|alpha|min:3',
+        'line.end' => 'required|alpha|min:3'
     ];
 
     public function create()
     {
         $this->validate();
-        $this->state->save();
+        $this->line->start = Str::ucfirst($this->line->start);
+        $this->line->end = Str::ucfirst($this->line->end);
+        $this->line->save();
         $this->emit('saved');
-        $this->emit('refresh-RailwayLineTable');
+        // przeładujemy całą stronę - bo inaczej nie ma odświeżenia flash'a
+        // $this->emit('refresh-RailwayLineTable');
+        session()->flash('flash.banner', 'Linia kolejowa została pomyślnie zapisana.');
+        session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('railwayLines'));
     }
 
     public function edit($id)
     {
-        dd($id);
+        $this->line = RailwayLine::where('id', $id)->get()->first();
     }
 
     public function update()
@@ -38,7 +46,8 @@ class RailwayLineCrud extends Component
     public function mount()
     {
         $this->mode = 'create';
-        $this->state = RailwayLine::where('id', 5)->get()->first();
+        $this->line = new RailwayLine;
+        // $this->state = RailwayLine::where('id', 5)->get()->first();
     }
 
     public function render()

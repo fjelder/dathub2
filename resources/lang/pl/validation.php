@@ -128,5 +128,9 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'attributes'           => [],
+    'attributes'           => [
+        'line.number' => 'numer linii',
+        'line.start' => 'początek linii',
+        'line.end' => 'koniec linii'
+    ],
 ];

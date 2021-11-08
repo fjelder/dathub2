@@ -30,7 +30,7 @@ Route::get('/users2', function () {
     return view('dashboard', ['users' => $users]);
 })->name('users');
 
-Route::prefix('data')->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->prefix('data')->group(function () {
     Route::resources([
         'contacts' => PersonController::class,
         'companies' => CompanyController::class

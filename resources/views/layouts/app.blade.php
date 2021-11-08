@@ -45,8 +45,8 @@
   }
   ```
 -->
-    <div class="bg-white">
 
+    <div class="bg-white">
         <div>
             <x-mobile-menu />
         </div>
