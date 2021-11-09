@@ -30,7 +30,4 @@
 
   </div>
 
-
-
-
 </x-app-layout>

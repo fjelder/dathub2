@@ -25,10 +25,15 @@ class RailwayLineTable extends DataTableComponent
             Column::make('Koniec', 'end')->searchable(),
             Column::make('/-/', 'id')
             ->format(function($value) {
-                return '<a href="" wire:click="update('.$value.')">Edit</a>';
-            })
-            ->asHtml()
+                return '<button wire:click.defer="update('.$value.')">Edit</button>';
+            })->asHtml()
         ];
+    }
+
+    public function update($id)
+    {
+        // dd($this->selectedRowsQuery);
+        $this->emitTo('date.railway-line-crud', 'editLine', $id);
     }
 
     public function query(): Builder

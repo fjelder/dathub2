@@ -36,8 +36,7 @@ $classes = ($active ?? false)
                         <div class="group relative text-base sm:text-sm">
                             <div
                                 class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg"
-                                    alt="Models sitting back to back, wearing Basic Tee in black and bone."
+                                <img src="" alt="Models sitting back to back, wearing Basic Tee in black and bone."
                                     class="object-center object-cover">
                             </div>
                             <a href="#" class="mt-6 block font-medium text-gray-900">
@@ -50,7 +49,7 @@ $classes = ($active ?? false)
                         <div class="group relative text-base sm:text-sm">
                             <div
                                 class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg"
+                                <img src=""
                                     alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees."
                                     class="object-center object-cover">
                             </div>

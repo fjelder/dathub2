@@ -80,7 +80,7 @@ return [
     'max'                  => [
         'array'   => 'Pole :attribute nie może mieć więcej niż :max elementów.',
         'file'    => 'Pole :attribute nie może być większe niż :max kilobajtów.',
-        'numeric' => 'Pole :attribute nie może być większe niż :max.',
+        'numeric' => 'Pole :attribute nie może być większe niż :max cyfry.',
         'string'  => 'Pole :attribute nie może być dłuższe niż :max znaków.',
     ],
     'mimes'                => 'Pole :attribute musi być plikiem typu :values.',

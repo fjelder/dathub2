@@ -1,5 +1,4 @@
 <div>
-    {{$line}}
     <x-jet-form-section :submit="$mode" display="horizontal">
         <x-slot name="title">
             Nowa linia kolejowa
@@ -18,8 +17,8 @@
             @endswitch
 
         </x-slot>
-
         <x-slot name="form">
+            <button wire:click.defer="edit(2)">editt</button>
             <div class="col-span-6">
                 <x-jet-label for="number" value="Numer linii" />
                 <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="line.number"

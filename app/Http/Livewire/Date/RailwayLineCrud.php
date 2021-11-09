@@ -14,10 +14,12 @@ class RailwayLineCrud extends Component
 
     protected $rules = [
 
-        'line.number' => 'required|numeric|unique:railway_lines,number',
+        'line.number' => 'required|numeric|max:3|unique:railway_lines,number',
         'line.start' => 'required|alpha|min:3',
         'line.end' => 'required|alpha|min:3'
     ];
+
+    protected $listeners = ['editLine' => 'edit'];
 
     public function create()
     {
@@ -36,6 +38,7 @@ class RailwayLineCrud extends Component
     public function edit($id)
     {
         $this->line = RailwayLine::where('id', $id)->get()->first();
+        // dd($this->line->number);
     }
 
     public function update()
