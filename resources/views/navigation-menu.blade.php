@@ -1,5 +1,5 @@
 <nav aria-label="Top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="border-b border-gray-200">
+    <div class="border-bx border-gray-200">
         <div class="h-16 flex items-center">
             <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
             <button type="button" @click="mobileMenuOpen = true"
@@ -31,7 +31,7 @@
                     @endif
 
                     <x-flayout-menu title="Dane" :active="request()->is('data/*')">
-                        <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
+                        <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16 border-t">
                             <div class="col-start-2 grid2 grid-cols-2 gap-x-8 hidden">
                                 <div class="group relative text-base sm:text-sm">
                                     <div
