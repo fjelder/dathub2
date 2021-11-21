@@ -5,8 +5,6 @@
 @import 'tailwindcss/utilities';
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
-
-
 .main-menu a {
     @apply tracking-wide;
 }
@@ -32,4 +30,18 @@ table thead tr th {
 
 .text-extra {
     @apply text-indigo-500 font-semibold;
+}
+
+input[type='text']
+{
+    @apply py-1 px-2 placeholder-gray-400 text-xs font-semibold bg-gray-100 border border-gray-200 focus:ring-green-300 focus:border-green-300 rounded-sm text-gray-600 h-9 w-full;
+}
+
+input[type='text'].search-input{
+    @apply px-12;
+}
+
+select
+{
+    @apply py-1 px-2 placeholder-gray-400 text-xs font-semibold bg-gray-100 border border-gray-200 focus:ring-green-300 focus:border-green-300 rounded-sm text-gray-600 h-9 w-full;
 }

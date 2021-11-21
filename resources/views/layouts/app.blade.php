@@ -178,9 +178,7 @@
                     <div class="hidden xl:inline-block ">
 
                         <div class="relative text-gray-600 h-9">
-                            <input
-                                class="py-1 px-12 placeholder-gray-400 text-xs font-semibold font-heading bg-gray-100 border border-gray-200 focus:ring-green-300 focus:border-green-300 rounded-sm text-gray-600 h-9"
-                                type="text" placeholder="WYSZUKAJ">
+                            <input class="search-input" type="text" placeholder="WYSZUKAJ">
                             <div class="absolute top-0 left-0 px-2 text-green-400 h-9 border-r">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 h-5 w-5" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
@@ -413,8 +411,8 @@
                                                 <label for="country"
                                                     class="block text-sm font-medium text-gray-700">Country</label>
                                                 <select id="country" name="country" autocomplete="country-name"
-                                                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                    <option>United States</option>
+                                                    class2="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option class="m-10">United States</option>
                                                     <option>Canada</option>
                                                     <option>Mexico</option>
                                                 </select>
