@@ -1,6 +1,8 @@
 <?php 
 
 return  [
+    //route redirect for defualt settings
+    'settingHomeRouteRedirect' => 'footerLinks',
 	//Names folder with data file
 	'files' => 'data-folder',
  
@@ -9,15 +11,4 @@ return  [
 
     //Widget - Weather
     'default_city' => 'Poznań',
-
-    //Settings Part
-    'default_create_form_enable' => false,
-    'lenght_label_shortcut' => 10, //max 20
-
-    //Table list
-    'default_displayRows' => 15,
-
-    //Visible mod
-    'display-list-people' => true
-
 ];

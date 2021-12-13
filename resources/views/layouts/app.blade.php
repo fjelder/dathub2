@@ -28,7 +28,7 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body x-data="{ mobileMenuOpen: false }" class="antialiased bg-gray-50 flex flex-col min-h-screen">
+<body x-data="{ mobileMenuOpen: false, asideOpen: true }" class="antialiased bg-gray-50 flex flex-col min-h-screen">
 
 
     <div class="bg-white hidden">
@@ -66,8 +66,9 @@
             <nav class="flex justify-between max-w-7xl mx-auto h-full">
                 <div class="hidden xl:flex items-center">
 
+                    
                     <!-- extra menu -->
-                    <a class="hidden xl:block mr-16 text-gray-500 hover:text-gray-800" href="#">
+                    <a class="hidden xl:block mr-16 text-gray-500 hover:text-gray-800" href="#" @click="asideOpen = !asideOpen">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -81,12 +82,12 @@
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Kontrakty</a></li>
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Bazy danych</a></li>
 
-                        <li class="">
+                        <li class="relative">
                             <!-- This example requires Tailwind CSS v2.0+ -->
                             <div class="relative inline-block" x-data="{open: false}">
                                 <div class="">
                                     <button @mouseenter="open = true" type="button"
-                                        class="inline-flex justify-center w-full hover:text-green-700 font-semibold"
+                                        class="inline-flex justify-center w-full hover:text-green-700 font-semibold "
                                         id="menu-button" aria-expanded="true" aria-haspopup="true">
                                         Bazy danych
                                         <!-- Heroicon name: solid/chevron-down -->
@@ -100,15 +101,15 @@
                                 </div>
 
 
-                                <div class="origin-top-left absolute left-0 w-56a shadow-xl bg-white focus:outline-none border-gray-300 border-b border-l border-r"
+                                <div class="origin-top-left absolute left-0 w-56a shadow-xl bg-white focus:outline-none border-gray-300 border-b border-l border-r z-10"
                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
                                     style="margin-top: 21px; min-width: 10rem; max-width: 20rem;" x-show="open" x-cloak
-                                    @mouseleave="open = false" x-transition:enter=" transition ease-out duration-100"
-                                    x-transition:enter-start="opacity-0 transform scale-95 "
-                                    x-transition:enter-end="opacity-100 transform scale-100"
-                                    x-transition:leave="transition ease-in duration-100"
-                                    x-transition:leave-start="opacity-100 transform scale-100"
-                                    x-transition:leave-end="opacity-0 transform scale-95">
+                                    @mouseleave="open = false" x-transition:enter=" transition ease-in duration-300"
+                                    x-transition:enter-start="opacity-0 transform -translate-y-full "
+                                    x-transition:enter-end="opacity-100 transform translate-y-0 "
+                                    x-transition:leave="transition ease-in duration-300"
+                                    x-transition:leave-start="opacity-100 transform translate-y-0"
+                                    x-transition:leave-end="opacity-0 transform -translate-y-full">
                                     <div class="border-t border-white"></div>
                                     <div class="py-2 font-medium text-gray-600" role="none">
                                         <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
@@ -164,7 +165,7 @@
                         </a>
                     </div>
                 </div>
-
+                {{-- LOGO --}}
                 <div class="flex-shrink-0 flex items-center ml-6 xl:ml-0">
                     <a class="flex-shrink-0 xl:mx-auto text-2xl font-bold text-gray-600 flex items-center space-x-3"
                         href="#">
@@ -174,11 +175,11 @@
                 </div>
 
                 <div class="flex items-center space-x-3">
-
+                    {{-- search input --}}
                     <div class="hidden xl:inline-block ">
 
                         <div class="relative text-gray-600 h-9">
-                            <input class="search-input" type="text" placeholder="WYSZUKAJ">
+                            <input class="search-input form-input" type="text" placeholder="WYSZUKAJ">
                             <div class="absolute top-0 left-0 px-2 text-green-400 h-9 border-r">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 h-5 w-5" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
@@ -198,7 +199,7 @@
                         </div>
                     </div>
 
-
+                    {{-- user menu --}}
                     <div
                         class="hidden xl:flex items-center h-full border-l font-semibold font-heading hover:text-gray-600 whitespace-nowrap">
                         <a class="ml-2 rounded-full border hover:border-green-300" href="#">
@@ -302,71 +303,34 @@
         </div>
 
 
+        @if (isset($header) || isset($breadcrumbs))
         <header
             class="flex items-center flex-col lg:flex-row lg:justify-between max-w-7xl mx-auto border-b py-6 px-6 xl:px-0 space-y-4 lg:space-y-0">
 
             <div class="w-full lg:w-auto text-2xl font-semibold text-gray-600">
-                Kontakty
+                @if(isset($header))
+                    {{ $header }}
+                @endif
             </div>
 
-            <div class="w-full lg:w-auto mt-0">
-
-                <nav class="flex" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                        <li class="inline-flex items-center">
-                            <a href="#" class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <a href="#"
-                                    class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Kontakty</a>
-                            </div>
-                        </li>
-                        <li aria-current="page">
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="text-gray-400 ml-1 md:ml-2 text-sm font-medium">Lista kontaktów</span>
-                            </div>
-                        </li>
-                    </ol>
-                </nav>
-
+            <div class="w-full lg:w-auto">
+                @if(isset($breadcrumbs))
+                    {{ $breadcrumbs }}
+                @endif
             </div>
         </header>
+        @endif
 
 
         <div class="flex max-w-7xl mx-auto">
-            <aside class="py-10 border-r max-w-xs hidden xl:block">
-                <ul class="bg-gray-50 w-40 text-gray-500 text-sm font-medium cursor-pointer">
-                    <li class="px-4 py-2 w-full hover:bg-gray-100">
-                        Lista kontaktów
-                    </li>
-                    <li class="px-4 py-2 w-full hover:bg-gray-100">Lista firm</li>
-                    <!-- active li add class -- relative border border-r-0 -->
-                    <li
-                        class="px-4 py-2 w-full hover:bg-gray-100 font-semibold text-green-500 relative border border-r-0">
-                        <div class="absolute border-r border-gray-50 inset-0 h-full w-full box-content"></div>
-                        Nowa osoba
-                    </li>
-                    <li class="px-4 py-2 w-full rounded-b-lg hover:bg-gray-100">Nowa firma</li>
-                </ul>
+            @isset($aside)
+            <aside class="py-10 border-r max-w-xs hidden xl:block" x-show="asideOpen">
+                {{$aside}}
             </aside>
+            @endif
 
             <main class="py-10 lg:ml-6 w-full">
-
+                {{$slot}}
                 <div class="hidden2">
                     <div class="md:grid md:grid-cols-3 md:gap-4">
                         <div class="md:col-span-1">

@@ -40,6 +40,15 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('data')->group(function 
     })->name('railwayLines');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->prefix('settings')->group(function () {
+    Route::get('footer_links', function(){
+        return view('settings.footer-links');
+    })->name('footerLinks');
+    Route::get('/', function(){
+        return redirect(route(config('set.settingHomeRouteRedirect')));
+    })->name('settings');
+});
+
 Route::middleware(['isAdmin'])->group(function () {
     Route::resources([
         'users' => UserController::class

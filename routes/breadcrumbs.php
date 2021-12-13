@@ -52,3 +52,14 @@ Breadcrumbs::for('railwayLine', function (BreadcrumbTrail $trail) {
 });
 
 
+// Home > Settings
+Breadcrumbs::for('settings', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Ustawienia', route('settings'));
+});
+
+// Home > Settings > FooterLinks
+Breadcrumbs::for('footerLinks', function (BreadcrumbTrail $trail) {
+    $trail->parent('settings');
+    $trail->push('Linki w stopce');
+});

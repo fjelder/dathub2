@@ -1,8 +1,8 @@
-@import 'fonts/lexend_peta.css';
-@import 'fonts/poppins.css';
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "fonts/lexend_peta.css";
+@import "fonts/poppins.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 .main-menu a {
@@ -20,11 +20,11 @@ p.logo {
 
 p.logo.login {
     @apply text-3xl font-normal;
-    font-family: 'Lexend Peta', sans-serif;
+    font-family: "Lexend Peta", sans-serif;
 }
 
 table thead tr th {
-    font-family: 'Poppins', 'Roboto Slab', serif;
+    font-family: "Poppins", "Roboto Slab", serif;
     @apply px-6 py-3 text-left text-xs font-normal text-gray-500 uppercase tracking-wider;
 }
 
@@ -32,16 +32,14 @@ table thead tr th {
     @apply text-indigo-500 font-semibold;
 }
 
-input[type='text']
-{
+input[type="text"].form-input {
     @apply py-1 px-2 placeholder-gray-400 text-xs font-semibold bg-gray-100 border border-gray-200 focus:ring-green-300 focus:border-green-300 rounded-sm text-gray-600 h-9 w-full;
 }
 
-input[type='text'].search-input{
+input[type="text"].search-input.form-input {
     @apply px-12;
 }
 
-select
-{
+select.form-select {
     @apply py-1 px-2 placeholder-gray-400 text-xs font-semibold bg-gray-100 border border-gray-200 focus:ring-green-300 focus:border-green-300 rounded-sm text-gray-600 h-9 w-full;
 }
