@@ -82,11 +82,13 @@
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Kontrakty</a></li>
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Bazy danych</a></li>
 
-                        <li class="">
+               
+
+                        <li class="h-full flex items-center" x-data="{open: false}" @mouseover.away = "open = false">
                             <!-- This example requires Tailwind CSS v2.0+ -->
-                            <div class="relative inline-block" x-data="{open: false}">
-                                <div class="h-full">
-                                    <button @mouseenter="open = true" type="button"
+                            <div class="relative inline-block" >
+                                <div class="">
+                                    <button @mouseover="open = true" type="button"
                                         class="inline-flex justify-center w-full hover:text-green-700 font-semibold "
                                         id="menu-button" aria-expanded="true" aria-haspopup="true">
                                         Bazy danych
