@@ -62,8 +62,8 @@
     </div>
 
     <div class="flex-grow">
-        <div class="relative border border-gray-300 shadow-sm bg-white h-16 box-border z-20">
-            <nav class="flex justify-between max-w-7xl mx-auto h-full">
+        <div class="relative border border-gray-300 shadow-sm bg-white h-16 box-border">
+            <nav class="flex justify-between max-w-7xl mx-auto h-full relative">
                 <div class="hidden xl:flex items-center">
 
                     
@@ -77,15 +77,15 @@
                     </a>
 
                     <ul
-                        class="hidden xl:flex xl:items-center font-semibold text-sm whitespace-nowrap text-gray-600 space-x-10">
+                        class="hidden xl:flex xl:items-center font-semibold text-sm whitespace-nowrap text-gray-600 space-x-10 bg-white h-full">
                         <li class="mr-12q"><a class="hover:text-green-700 text-green-600" href="#">Home</a></li>
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Kontrakty</a></li>
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Bazy danych</a></li>
 
-                        <li class="relative">
+                        <li class="">
                             <!-- This example requires Tailwind CSS v2.0+ -->
                             <div class="relative inline-block" x-data="{open: false}">
-                                <div class="">
+                                <div class="h-full">
                                     <button @mouseenter="open = true" type="button"
                                         class="inline-flex justify-center w-full hover:text-green-700 font-semibold "
                                         id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -101,15 +101,15 @@
                                 </div>
 
 
-                                <div class="origin-top-left absolute left-0 w-56a shadow-xl bg-white focus:outline-none border-gray-300 border-b border-l border-r z-10"
+                                <div class="origin-top-left absolute left-0 w-56a shadow-xl bg-white focus:outline-none border-gray-300 border-b border-l border-r"
                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
                                     style="margin-top: 21px; min-width: 10rem; max-width: 20rem;" x-show="open" x-cloak
-                                    @mouseleave="open = false" x-transition:enter=" transition ease-in duration-300"
-                                    x-transition:enter-start="opacity-0 transform -translate-y-full "
-                                    x-transition:enter-end="opacity-100 transform translate-y-0 "
-                                    x-transition:leave="transition ease-in duration-300"
-                                    x-transition:leave-start="opacity-100 transform translate-y-0"
-                                    x-transition:leave-end="opacity-0 transform -translate-y-full">
+                                    @mouseleave="open = false" x-transition:enter="-z-10 transition ease-in duration-200"
+                                    x-transition:enter-start="opacity-0a transform -translate-y-full "
+                                    x-transition:enter-end="z-50 opacity-100a transform translate-y-0 "
+                                    x-transition:leave="transition ease-in duration-200 z-50"
+                                    x-transition:leave-start="opacity-100a transform translate-y-0"
+                                    x-transition:leave-end="-z-10 opacity-0a transform -translate-y-full">
                                     <div class="border-t border-white"></div>
                                     <div class="py-2 font-medium text-gray-600" role="none">
                                         <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->

@@ -888,10 +888,14 @@ video {
     z-index: 50;
 }.z-10{
     z-index: 10;
-}.z-20{
-    z-index: 20;
+}.-z-10{
+    z-index: -10;
+}.z-auto{
+    z-index: auto;
 }.z-40{
     z-index: 40;
+}.z-20{
+    z-index: 20;
 }.col-span-6{
     grid-column: span 6 / span 6;
 }.col-start-2{
