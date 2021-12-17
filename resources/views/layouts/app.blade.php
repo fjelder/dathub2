@@ -9,11 +9,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
 
-    {{--
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 
@@ -22,10 +25,22 @@
         [x-cloak] {
             display: none !important;
         }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .drodown-body {
+            margin-top: 19px;
+            min-width: 10rem;
+            max-width: 20rem;
+        }
     </style>
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+
+
 </head>
 
 <body x-data="{ mobileMenuOpen: false, asideOpen: true }" class="antialiased bg-gray-50 flex flex-col min-h-screen">
@@ -62,34 +77,25 @@
     </div>
 
     <div class="flex-grow">
-        <div class="relative border border-gray-300 shadow-sm bg-white h-16 box-border">
+        <div class="relative border-b border-gray-300 shadow-sm bg-white h-16 box-border z-50">
             <nav class="flex justify-between max-w-7xl mx-auto h-full relative">
+                <!-- main menu -->
                 <div class="hidden xl:flex items-center">
 
-                    
-                    <!-- extra menu -->
-                    <a class="hidden xl:block mr-16 text-gray-500 hover:text-gray-800" href="#" @click="asideOpen = !asideOpen">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </a>
 
                     <ul
                         class="hidden xl:flex xl:items-center font-semibold text-sm whitespace-nowrap text-gray-600 space-x-10 bg-white h-full">
                         <li class="mr-12q"><a class="hover:text-green-700 text-green-600" href="#">Home</a></li>
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Kontrakty</a></li>
-                        <li class="mr-12q"><a class="hover:text-green-700" href="#">Bazy danych</a></li>
 
-               
 
-                        <li class="h-full flex items-center" x-data="{open: false}" @mouseover.away = "open = false">
+
+                        <li class="h-full flex items-center" x-data="{open: false}" @mouseover.away="open = false">
                             <!-- This example requires Tailwind CSS v2.0+ -->
-                            <div class="relative inline-block" >
+                            <div class="relative inline-block">
                                 <div class="">
                                     <button @mouseover="open = true" type="button"
-                                        class="inline-flex justify-center w-full hover:text-green-700 font-semibold "
+                                        class="inline-flex justify-center w-full hover:text-green-700 font-semibold"
                                         id="menu-button" aria-expanded="true" aria-haspopup="true">
                                         Bazy danych
                                         <!-- Heroicon name: solid/chevron-down -->
@@ -103,16 +109,18 @@
                                 </div>
 
 
-                                <div class="origin-top-left absolute left-0 w-56a shadow-xl bg-white focus:outline-none border-gray-300 border-b border-l border-r"
+                                <div class="origin-top-left absolute left-0 w-56a shadow-xl focus:outline-none border-gray-300 border-b border-l border-r bg-white transition-all ease-in duration-500 overflow-y-hidden"
                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
-                                    style="margin-top: 21px; min-width: 10rem; max-width: 20rem;" x-show="open" x-cloak
-                                    @mouseleave="open = false" x-transition:enter="-z-10 transition ease-in duration-200"
-                                    x-transition:enter-start="opacity-0a transform -translate-y-full "
-                                    x-transition:enter-end="z-50 opacity-100a transform translate-y-0 "
-                                    x-transition:leave="transition ease-in duration-200 z-50"
-                                    x-transition:leave-start="opacity-100a transform translate-y-0"
-                                    x-transition:leave-end="-z-10 opacity-0a transform -translate-y-full">
+                                    style="margin-top: 21px; min-width: 10rem; max-width: 20rem;" x-show="open"
+                                    :class="open ? 'min-h-40' : 'min-h-0'" x-cloak @mouseleave=" open=false"
+                                    x-transition:enter="transition-all ease-in duration-500"
+                                    x-transition:enter-start="opacity-0 transform "
+                                    x-transition:enter-end="opacity-100 transform"
+                                    x-transition:leave="transition-all ease-in duration-500"
+                                    x-transition:leave-start="opacity-100 transform"
+                                    x-transition:leave-end="opacity-0 transform">
                                     <div class="border-t border-white"></div>
+
                                     <div class="py-2 font-medium text-gray-600" role="none">
                                         <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                                         <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 " role="menuitem"
@@ -134,6 +142,10 @@
                                 </div>
                             </div>
 
+                        </li>
+
+                        <li class="">
+                            <x-ui.dropdown-main-menu title="Dane" />
                         </li>
 
 
@@ -167,7 +179,7 @@
                         </a>
                     </div>
                 </div>
-                {{-- LOGO --}}
+                <!-- logo -->
                 <div class="flex-shrink-0 flex items-center ml-6 xl:ml-0">
                     <a class="flex-shrink-0 xl:mx-auto text-2xl font-bold text-gray-600 flex items-center space-x-3"
                         href="#">
@@ -176,8 +188,9 @@
                     </a>
                 </div>
 
+                <!-- right menu -->
                 <div class="flex items-center space-x-3">
-                    {{-- search input --}}
+                    <!-- search input -->
                     <div class="hidden xl:inline-block ">
 
                         <div class="relative text-gray-600 h-9">
@@ -201,7 +214,7 @@
                         </div>
                     </div>
 
-                    {{-- user menu --}}
+                    <!-- user menu -->
                     <div
                         class="hidden xl:flex items-center h-full border-l font-semibold font-heading hover:text-gray-600 whitespace-nowrap">
                         <a class="ml-2 rounded-full border hover:border-green-300" href="#">
@@ -311,18 +324,19 @@
 
             <div class="w-full lg:w-auto text-2xl font-semibold text-gray-600">
                 @if(isset($header))
-                    {{ $header }}
+                {{ $header }}
                 @endif
             </div>
 
             <div class="w-full lg:w-auto">
                 @if(isset($breadcrumbs))
-                    {{ $breadcrumbs }}
+                {{ $breadcrumbs }}
                 @endif
             </div>
         </header>
         @endif
 
+        <x-ui.dropdown-main-menu />
 
         <div class="flex max-w-7xl mx-auto">
             @isset($aside)
