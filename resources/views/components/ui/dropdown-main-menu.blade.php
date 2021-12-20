@@ -1,10 +1,28 @@
 @props([
-'title' => 'Title'
+'title' => 'Title',
+'direct' => 'left'
 ])
-<div x-data="{showDropdown: false}" @click.away="showDropdown = false" class="relative border-gray-300">
+@php
+switch($direct) {
+case 'left':
+$direct = 'left-0';
+break;
+
+case 'right':
+$direct = 'right-0';
+break;
+
+default:
+$direct = 'left-0';
+break;
+}
+
+@endphp
+<div x-data="{showDropdown: false}" @click.away="showDropdown = false" class="relative border-gray-300"
+    :class="{ 'z-50': showDropdown }">
     <a href=""
-        class="my-2a py-2a px-2a flex w-full items-center justify-between rounded hover:bg-gray-800 hover:shadow hover:text-gray-200 transition-colors ease-in-out duration-500"
-        :class="{ 'bg-gray-800 shadow text-gray-200': showDropdown }" @click.prevent="showDropdown = ! showDropdown">
+        class="my-2a p-1 px-2a flex w-full items-center justify-between rounded hover:text-green-700 transition-colors ease-in-out duration-500 focus:outline-gray"
+        :class="{ 'focus:outline-gray ': showDropdown }" @click.prevent="showDropdown = ! showDropdown">
         <div class="flex items-center">
             <span class="mr-4">
                 <x-heroicon-o-database class="w-6 h-6" />
@@ -17,13 +35,13 @@
 
     </a>
 
-    <div class="overflow-y-hidden max-h-0 transition-all ease-in-out duration-300 absolute bg-white border-gray-300 border-b border-l border-r drodown-body"
+    <div class="overflow-y-hidden max-h-0 transition-all ease-in-out duration-300 absolute {{$direct}} bg-white border-gray-300 border-b border-l border-r drodown-body font-normal"
         style="" x-ref="dropdownContainer"
         x-bind:style="showDropdown ? 'max-height: ' + $refs.dropdownContainer.scrollHeight + 'px' : '' ">
         <div class="border-t-2 border-white"></div>
 
         <a href=""
-            class="my-2 py-2 px-2 flex items-center rounded hover:bg-gray-800 hover:shadow hover:text-gray-200 transition-colors ease-in-out duration-500">
+            class="my-2 py-2 px-2 flex items-center rounded hover:bg-gray-500 hover:shadow hover:text-gray-200 transition-colors ease-in-out duration-500">
             <span class="mr-4">
                 <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path
@@ -34,7 +52,7 @@
             <span>{{ trans('Roles') }}</span>
         </a>
         <a href=""
-            class="my-2 py-2 px-2 flex items-center rounded hover:bg-gray-800 hover:shadow hover:text-gray-200 transition-colors ease-in-out duration-500">
+            class="my-2 py-2 px-2 flex items-center rounded hover:bg-gray-500 hover:shadow hover:text-gray-200 transition-colors ease-in-out duration-500">
             <span class="mr-4">
                 <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path
@@ -44,7 +62,7 @@
             <span>{{ trans('Permissions') }}</span>
         </a>
         <a href=""
-            class="my-2 py-2 px-2 flex items-center rounded hover:bg-gray-800 hover:shadow hover:text-gray-200 transition-colors ease-in-out duration-500">
+            class="my-2 py-2 px-2 flex items-center rounded hover:bg-gray-500 hover:shadow hover:text-gray-200 transition-colors ease-in-out duration-500">
             <span class="mr-4">
                 <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path

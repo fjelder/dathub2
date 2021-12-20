@@ -27,6 +27,10 @@ module.exports = {
             minHeight: {
                 40: "10rem",
             },
+            fontWeight: ["hover"],
+            outline: {
+                gray: ["1px dashed #ccc", "2px"],
+            },
         },
     },
 

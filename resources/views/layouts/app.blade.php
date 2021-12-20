@@ -9,9 +9,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600&display=swap"
-        rel="stylesheet">
 
     <!-- Styles -->
 
@@ -26,12 +23,8 @@
             display: none !important;
         }
 
-        body {
-            font-family: 'Nunito', sans-serif;
-        }
-
         .drodown-body {
-            margin-top: 19px;
+            margin-top: 15px;
             min-width: 10rem;
             max-width: 20rem;
         }
@@ -84,18 +77,19 @@
 
 
                     <ul
-                        class="hidden xl:flex xl:items-center font-semibold text-sm whitespace-nowrap text-gray-600 space-x-10 bg-white h-full">
+                        class="hidden xl:flex xl:items-center font-medium text-sm whitespace-nowrap text-gray-600 space-x-10 bg-white h-full">
                         <li class="mr-12q"><a class="hover:text-green-700 text-green-600" href="#">Home</a></li>
                         <li class="mr-12q"><a class="hover:text-green-700" href="#">Kontrakty</a></li>
 
 
 
-                        <li class="h-full flex items-center" x-data="{open: false}" @mouseover.away="open = false">
+                        <li class="hidden h-full flex items-center" x-data="{open: false}"
+                            @mouseover.away="open = false">
                             <!-- This example requires Tailwind CSS v2.0+ -->
                             <div class="relative inline-block">
                                 <div class="">
                                     <button @mouseover="open = true" type="button"
-                                        class="inline-flex justify-center w-full hover:text-green-700 font-semibold"
+                                        class="inline-flex justify-center w-full hover:text-green-700 font-medium"
                                         id="menu-button" aria-expanded="true" aria-haspopup="true">
                                         Bazy danych
                                         <!-- Heroicon name: solid/chevron-down -->
@@ -145,7 +139,19 @@
                         </li>
 
                         <li class="">
-                            <x-ui.dropdown-main-menu title="Dane" />
+                            <x-ui.dropdown-main-menu title="Kontrakty" direct="left" />
+                        </li>
+
+                        <li class="">
+                            <x-ui.dropdown-main-menu title="Dane" direct="left" />
+                        </li>
+
+                        <li class="">
+                            <x-ui.dropdown-main-menu title="Kontakty" direct="left" />
+                        </li>
+
+                        <li class="">
+                            <x-ui.dropdown-main-menu title="System" direct="right" />
                         </li>
 
 
