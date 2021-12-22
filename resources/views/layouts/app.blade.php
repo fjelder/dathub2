@@ -24,8 +24,8 @@
         }
 
         .drodown-body {
-            margin-top: 15px;
-            min-width: 10rem;
+            margin-top: 17px;
+            /* min-width: 10rem; */
             max-width: 20rem;
         }
     </style>
@@ -36,10 +36,10 @@
 
 </head>
 
-<body x-data="{ mobileMenuOpen: false, asideOpen: true }" class="antialiased bg-gray-50 flex flex-col min-h-screen">
+<body x-data="{ mobileMenuOpen: false, asideOpen: true }" class="flex flex-col min-h-screen antialiased bg-gray-50">
 
 
-    <div class="bg-white hidden">
+    <div class="hidden bg-white">
         <div>
             <x-mobile-menu />
         </div>
@@ -49,8 +49,8 @@
         </header>
 
         @if (isset($header) || isset($breadcrumbs))
-        <div class="bg-white mt-2">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between">
+        <div class="mt-2 bg-white">
+            <div class="flex flex-col justify-between px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8 sm:flex-row">
                 <div>
                     @if(isset($header))
                     <h2>{{ $header }}</h2>
@@ -70,80 +70,24 @@
     </div>
 
     <div class="flex-grow">
-        <div class="relative border-b border-gray-300 shadow-sm bg-white h-16 box-border z-50">
-            <nav class="flex justify-between max-w-7xl mx-auto h-full relative">
+        <div class="box-border relative z-50 h-16 bg-white border-b border-gray-300 shadow-sm">
+            <nav class="relative flex justify-between h-full mx-auto max-w-7xl">
                 <!-- main menu -->
-                <div class="hidden xl:flex items-center">
+                <div class="items-center hidden xl:flex">
 
 
                     <ul
-                        class="hidden xl:flex xl:items-center font-medium text-sm whitespace-nowrap text-gray-600 space-x-10 bg-white h-full">
-                        <li class="mr-12q"><a class="hover:text-green-700 text-green-600" href="#">Home</a></li>
-                        <li class="mr-12q"><a class="hover:text-green-700" href="#">Kontrakty</a></li>
+                        class="hidden h-full space-x-5 text-sm font-medium text-gray-600 bg-white xl:flex xl:items-center whitespace-nowrap">
+                        <li class="mr-12q"><a class="" href="#">Home</a>
+                        </li>
+                        <li class="mr-12q"><a class="active" href="#">Kontrakty</a></li>
 
-
-
-                        <li class="hidden h-full flex items-center" x-data="{open: false}"
-                            @mouseover.away="open = false">
-                            <!-- This example requires Tailwind CSS v2.0+ -->
-                            <div class="relative inline-block">
-                                <div class="">
-                                    <button @mouseover="open = true" type="button"
-                                        class="inline-flex justify-center w-full hover:text-green-700 font-medium"
-                                        id="menu-button" aria-expanded="true" aria-haspopup="true">
-                                        Bazy danych
-                                        <!-- Heroicon name: solid/chevron-down -->
-                                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                </div>
-
-
-                                <div class="origin-top-left absolute left-0 w-56a shadow-xl focus:outline-none border-gray-300 border-b border-l border-r bg-white transition-all ease-in duration-500 overflow-y-hidden"
-                                    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
-                                    style="margin-top: 21px; min-width: 10rem; max-width: 20rem;" x-show="open"
-                                    :class="open ? 'min-h-40' : 'min-h-0'" x-cloak @mouseleave=" open=false"
-                                    x-transition:enter="transition-all ease-in duration-500"
-                                    x-transition:enter-start="opacity-0 transform "
-                                    x-transition:enter-end="opacity-100 transform"
-                                    x-transition:leave="transition-all ease-in duration-500"
-                                    x-transition:leave-start="opacity-100 transform"
-                                    x-transition:leave-end="opacity-0 transform">
-                                    <div class="border-t border-white"></div>
-
-                                    <div class="py-2 font-medium text-gray-600" role="none">
-                                        <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 " role="menuitem"
-                                            tabindex="-1" id="menu-item-0">Kontakty</a>
-                                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem"
-                                            tabindex="-1" id="menu-item-1">Linie kolejowe</a>
-                                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem"
-                                            tabindex="-1" id="menu-item-2">Stacje kolejowe</a>
-                                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem"
-                                            tabindex="-1" id="menu-item-2">Przejazdy kolejowo - drogowe</a>
-                                        <form method="POST" action="#" role="none">
-                                            <button type="submit"
-                                                class="-mb-2 border-t text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-green-200 bg-gray-200a font-semibold"
-                                                role="menuitem" tabindex="-1" id="menu-item-3">
-                                                Sign out
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <li class="">
+                            <x-ui.dropdown-main-menu title="Kontrakty" direct="left" icon="collection" iconStyle="o" />
                         </li>
 
                         <li class="">
-                            <x-ui.dropdown-main-menu title="Kontrakty" direct="left" />
-                        </li>
-
-                        <li class="">
-                            <x-ui.dropdown-main-menu title="Dane" direct="left" />
+                            <x-ui.dropdown-main-menu title="Dane" direct="left" icon="chip" iconStyle='' />
                         </li>
 
                         <li class="">
@@ -158,7 +102,7 @@
                         <!-- <li><a class="hover:text-gray-600" href="#">Brand</a></li> -->
                     </ul>
 
-                    <div class="hidden xl:flex2 items-center">
+                    <div class="items-center hidden xl:flex2">
                         <a class="mr-10 hover:text-gray-600" href="#">
                             <svg width="23" height="20" viewbox="0 0 23 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -181,13 +125,13 @@
                                     stroke-linejoin="round"></path>
                             </svg>
                             <span
-                                class="inline-block w-6 h-6 text-center bg-gray-100 rounded-full font-semibold font-heading">3</span>
+                                class="inline-block w-6 h-6 font-semibold text-center bg-gray-100 rounded-full font-heading">3</span>
                         </a>
                     </div>
                 </div>
                 <!-- logo -->
-                <div class="flex-shrink-0 flex items-center ml-6 xl:ml-0">
-                    <a class="flex-shrink-0 xl:mx-auto text-2xl font-bold text-gray-600 flex items-center space-x-3"
+                <div class="flex items-center flex-shrink-0 ml-6 xl:ml-0">
+                    <a class="flex items-center flex-shrink-0 space-x-3 text-2xl font-bold text-gray-600 xl:mx-auto"
                         href="#">
                         <img class="h-9" src="/larax.svg" alt="" width="auto">
                         <span class="">{{config('app.name', 'Larax')}}</span>
@@ -201,16 +145,16 @@
 
                         <div class="relative text-gray-600 h-9">
                             <input class="search-input form-input" type="text" placeholder="WYSZUKAJ">
-                            <div class="absolute top-0 left-0 px-2 text-green-400 h-9 border-r">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 h-5 w-5" fill="none"
+                            <div class="absolute top-0 left-0 px-2 text-green-400 border-r h-9">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-2" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
 
-                            <div class="absolute top-2 right-2 text-green-300 hover:text-green-700 cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            <div class="absolute text-green-300 cursor-pointer top-2 right-2 hover:text-green-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
@@ -222,8 +166,8 @@
 
                     <!-- user menu -->
                     <div
-                        class="hidden xl:flex items-center h-full border-l font-semibold font-heading hover:text-gray-600 whitespace-nowrap">
-                        <a class="ml-2 rounded-full border hover:border-green-300" href="#">
+                        class="items-center hidden h-full font-semibold border-l xl:flex font-heading hover:text-gray-600 whitespace-nowrap">
+                        <a class="ml-2 border rounded-full hover:border-green-300" href="#">
                             <svg class="" width="32" height="31" viewbox="0 0 32 31" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -241,7 +185,7 @@
                 </div>
 
                 <!-- hamburger -->
-                <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
+                <a class="self-center mr-12 navbar-burger xl:hidden" href="#">
                     <svg width="20" height="12" viewbox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 2H19C19.2652 2 19.5196 1.89464 19.7071 1.70711C19.8946 1.51957 20 1.26522 20 1C20 0.734784 19.8946 0.48043 19.7071 0.292893C19.5196 0.105357 19.2652 0 19 0H1C0.734784 0 0.48043 0.105357 0.292893 0.292893C0.105357 0.48043 0 0.734784 0 1C0 1.26522 0.105357 1.51957 0.292893 1.70711C0.48043 1.89464 0.734784 2 1 2ZM19 10H1C0.734784 10 0.48043 10.1054 0.292893 10.2929C0.105357 10.4804 0 10.7348 0 11C0 11.2652 0.105357 11.5196 0.292893 11.7071C0.48043 11.8946 0.734784 12 1 12H19C19.2652 12 19.5196 11.8946 19.7071 11.7071C19.8946 11.5196 20 11.2652 20 11C20 10.7348 19.8946 10.4804 19.7071 10.2929C19.5196 10.1054 19.2652 10 19 10ZM19 5H1C0.734784 5 0.48043 5.10536 0.292893 5.29289C0.105357 5.48043 0 5.73478 0 6C0 6.26522 0.105357 6.51957 0.292893 6.70711C0.48043 6.89464 0.734784 7 1 7H19C19.2652 7 19.5196 6.89464 19.7071 6.70711C19.8946 6.51957 20 6.26522 20 6C20 5.73478 19.8946 5.48043 19.7071 5.29289C19.5196 5.10536 19.2652 5 19 5Z"
@@ -251,23 +195,23 @@
 
             </nav>
             <!-- mobile menu -->
-            <div class="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50">
-                <div class="navbar-backdrop fixed inset-0 bg-gray-900 opacity-50"></div>
-                <nav class="relative flex flex-col py-6 px-6 w-full h-full bg-white border-r overflow-y-auto">
+            <div class="fixed top-0 bottom-0 left-0 z-50 hidden w-5/6 max-w-sm navbar-menu">
+                <div class="fixed inset-0 bg-gray-900 opacity-50 navbar-backdrop"></div>
+                <nav class="relative flex flex-col w-full h-full px-6 py-6 overflow-y-auto bg-white border-r">
                     <div class="flex items-center mb-8">
-                        <a class="mr-auto text-2xl font-bold text-gray-600 flex items-center space-x-3" href="#">
+                        <a class="flex items-center mr-auto space-x-3 text-2xl font-bold text-gray-600" href="#">
                             <img class="h-9" src="yofte-assets/logos/larax.svg" alt="" width="auto">
                             <span>Larax</span>
                         </a>
                         <button class="navbar-close">
-                            <svg class="h-2 w-2 text-gray-500 cursor-pointer" width="10" height="10" viewbox="0 0 10 10"
+                            <svg class="w-2 h-2 text-gray-500 cursor-pointer" width="10" height="10" viewbox="0 0 10 10"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.00002 1L1 9.00002M1.00003 1L9.00005 9.00002" stroke="black"
                                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
                     </div>
-                    <div class="flex mb-8 justify-between">
+                    <div class="flex justify-between mb-8">
                         <a class="inline-flex items-center font-semibold font-heading" href="#">
                             <svg class="mr-3" width="32" height="31" viewbox="0 0 32 31" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -305,12 +249,12 @@
                                         stroke-linejoin="round"></path>
                                 </svg>
                                 <span
-                                    class="inline-block w-6 h-6 text-center bg-gray-100 rounded-full font-semibold font-heading">3</span>
+                                    class="inline-block w-6 h-6 font-semibold text-center bg-gray-100 rounded-full font-heading">3</span>
                             </a>
                         </div>
                     </div>
                     <input
-                        class="block mb-10 py-5 px-8 bg-gray-100 rounded-md border-transparent focus:ring-blue-300 focus:border-blue-300 focus:outline-none"
+                        class="block px-8 py-5 mb-10 bg-gray-100 border-transparent rounded-md focus:ring-blue-300 focus:border-blue-300 focus:outline-none"
                         type="search" placeholder="Search">
                     <ul class="text-3xl font-bold font-heading">
                         <li class="mb-8"><a href="#">Category</a></li>
@@ -326,9 +270,9 @@
 
         @if (isset($header) || isset($breadcrumbs))
         <header
-            class="flex items-center flex-col lg:flex-row lg:justify-between max-w-7xl mx-auto border-b py-6 px-6 xl:px-0 space-y-4 lg:space-y-0">
+            class="flex flex-col items-center px-6 py-6 mx-auto space-y-4 border-b lg:flex-row lg:justify-between max-w-7xl xl:px-0 lg:space-y-0">
 
-            <div class="w-full lg:w-auto text-2xl font-semibold text-gray-600">
+            <div class="w-full text-2xl font-semibold text-gray-600 lg:w-auto">
                 @if(isset($header))
                 {{ $header }}
                 @endif
@@ -344,14 +288,14 @@
 
         <x-ui.dropdown-main-menu />
 
-        <div class="flex max-w-7xl mx-auto">
+        <div class="flex mx-auto max-w-7xl">
             @isset($aside)
-            <aside class="py-10 border-r max-w-xs hidden xl:block" x-show="asideOpen">
+            <aside class="hidden max-w-xs py-10 border-r xl:block" x-show="asideOpen">
                 {{$aside}}
             </aside>
             @endif
 
-            <main class="py-10 lg:ml-6 w-full">
+            <main class="w-full py-10 lg:ml-6">
                 {{$slot}}
                 <div class="hidden2">
                     <div class="md:grid md:grid-cols-3 md:gap-4">
@@ -365,7 +309,7 @@
                         </div>
                         <div class="mt-5 md:mt-0 md:col-span-2">
                             <form action="#" method="POST">
-                                <div class="shadow overflow-hidden sm:rounded-md">
+                                <div class="overflow-hidden shadow sm:rounded-md">
                                     <div class="px-4 py-5 bg-white sm:p-6">
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
@@ -373,7 +317,7 @@
                                                     class="block text-sm font-medium text-gray-700">First name</label>
                                                 <input type="text" name="first-name" id="first-name"
                                                     autocomplete="given-name"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
@@ -381,7 +325,7 @@
                                                     class="block text-sm font-medium text-gray-700">Last name</label>
                                                 <input type="text" name="last-name" id="last-name"
                                                     autocomplete="family-name"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-4">
@@ -390,7 +334,7 @@
                                                     address</label>
                                                 <input type="text" name="email-address" id="email-address"
                                                     autocomplete="email"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
@@ -410,14 +354,14 @@
                                                     address</label>
                                                 <input type="text" name="street-address" id="street-address"
                                                     autocomplete="street-address"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                                                 <label for="city"
                                                     class="block text-sm font-medium text-gray-700">City</label>
                                                 <input type="text" name="city" id="city" autocomplete="address-level2"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -426,7 +370,7 @@
                                                     Province</label>
                                                 <input type="text" name="region" id="region"
                                                     autocomplete="address-level1"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -435,13 +379,13 @@
                                                     code</label>
                                                 <input type="text" name="postal-code" id="postal-code"
                                                     autocomplete="postal-code"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                    <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
                                         <button type="submit"
-                                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Save
                                         </button>
                                     </div>
@@ -474,7 +418,7 @@
 
 
                     <section class="bg-gray-100">
-                        <div class="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+                        <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                             <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
                                 <div class="lg:py-12 lg:col-span-2">
                                     <p class="max-w-xl text-lg">
@@ -513,7 +457,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center grid grid-cols-1 gap-4 sm:grid-cols-3">
+                                        <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
                                             <div>
                                                 <input class="sr-only" id="option1" type="radio" tabindex="-1" />
                                                 <label for="option1"
@@ -591,7 +535,7 @@
 
 
 
-                    <div class="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+                    <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                         <div class="max-w-lg mx-auto text-center">
                             <h1 class="text-2xl font-bold sm:text-3xl">Nowa osoba</h1>
 
@@ -660,7 +604,7 @@
     </div>
 
 
-    <footer class="bg-white dark:bg-gray-800 border-t border-gray-300">
+    <footer class="bg-white border-t border-gray-300 dark:bg-gray-800">
         <div class="container px-6 py-8 mx-auto">
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 @php $linksTitle = ['Kolejowe', 'Informacyjne', 'Poznań', 'Sieciowe']; @endphp
