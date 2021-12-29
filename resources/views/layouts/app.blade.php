@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark2">
 
 <head>
     <meta charset="utf-8">
@@ -36,9 +36,11 @@
 
 </head>
 
-<body x-data="{ mobileMenuOpen: false, asideOpen: true }" class="flex flex-col min-h-screen antialiased bg-gray-50">
+<body x-data="{ mobileMenuOpen: false, asideOpen: true }"
+    class="flex flex-col min-h-screen antialiased text-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
 
 
+    @livewire('navigation-menu')
     <div class="flex-grow">
         <div class="box-border relative z-50 h-16 bg-white border-b border-gray-300 shadow-sm">
 
@@ -51,9 +53,9 @@
 
         @if (isset($header) || isset($breadcrumbs))
         <header
-            class="flex flex-col items-center px-6 py-6 mx-auto space-y-4 border-b lg:flex-row lg:justify-between max-w-7xl xl:px-0 lg:space-y-0">
+            class="flex flex-col items-center px-6 py-6 mx-auto space-y-4 border-b lg:flex-row lg:justify-between max-w-7xl xl:px-0 lg:space-y-0 dark:border-gray-600">
 
-            <div class="w-full text-2xl font-semibold text-gray-600 lg:w-auto">
+            <div class="w-full text-2xl font-semibold lg:w-auto">
                 @if(isset($header))
                 {{ $header }}
                 @endif
@@ -85,8 +87,8 @@
                             Imię i nazwisko
                         </label>
 
-                        <input type="text" id="name" placeholder="John Doe"
-                            class="absolute inset-0 w-full px-3 pb-3 bg-transparent border-gray-200 rounded-lg sm:text-sm pt-9" />
+                        <input type="text" id="name" placeholder=""
+                            class="absolute inset-0 w-full px-3 pb-3 text-gray-700 bg-transparent border-gray-200 sm:text-sm pt-9 focus:outline-none focus:ring-0 focus:border-green-300" />
                     </div>
 
 

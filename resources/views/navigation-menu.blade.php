@@ -1,23 +1,23 @@
-<nav aria-label="Top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="border-bx border-gray-200">
-        <div class="h-16 flex items-center">
+<nav aria-label="Top" class="hidden px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="border-gray-200 border-bx">
+        <div class="flex items-center h-16">
             <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
             <button type="button" @click="mobileMenuOpen = true"
-                class="bg-white p-2 rounded-md text-gray-400 lg:hidden">
+                class="p-2 text-gray-400 bg-white rounded-md lg:hidden">
                 <span class="sr-only">Open menu</span>
-                <x-heroicon-o-menu class="h-6 w-6" />
+                <x-heroicon-o-menu class="w-6 h-6" />
             </button>
 
             <!-- Logo -->
-            <div class="ml-4 flex lg:ml-0">
+            <div class="flex ml-4 lg:ml-0">
                 <a href="{{ route('dashboard') }}">
-                    <x-jet-application-mark class="block h-11 w-auto" />
+                    <x-jet-application-mark class="block w-auto h-11" />
                 </a>
             </div>
 
             <!-- Flyout menus -->
             <div class="hidden lg:ml-8 lg:block lg:self-stretch">
-                <div class="h-full flex space-x-8">
+                <div class="flex h-full space-x-8">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
@@ -31,37 +31,37 @@
                     @endif
 
                     <x-flayout-menu title="Dane" :active="request()->is('data/*')">
-                        <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16 border-t">
-                            <div class="col-start-2 grid2 grid-cols-2 gap-x-8 hidden">
-                                <div class="group relative text-base sm:text-sm">
+                        <div class="grid grid-cols-2 py-16 border-t gap-y-10 gap-x-8">
+                            <div class="hidden grid-cols-2 col-start-2 grid2 gap-x-8">
+                                <div class="relative text-base group sm:text-sm">
                                     <div
-                                        class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                        class="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1 group-hover:opacity-75">
                                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg"
                                             alt="Models sitting back to back, wearing Basic Tee in black and bone."
-                                            class="object-center object-cover">
+                                            class="object-cover object-center">
                                     </div>
-                                    <a href="#" class="mt-6 block font-medium text-gray-900">
-                                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                    <a href="#" class="block mt-6 font-medium text-gray-900">
+                                        <span class="absolute inset-0 z-10" aria-hidden="true"></span>
                                         New Arrivals
                                     </a>
                                     <p aria-hidden="true" class="mt-1">Shop now</p>
                                 </div>
 
-                                <div class="group relative text-base sm:text-sm">
+                                <div class="relative text-base group sm:text-sm">
                                     <div
-                                        class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                        class="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1 group-hover:opacity-75">
                                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg"
                                             alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees."
-                                            class="object-center object-cover">
+                                            class="object-cover object-center">
                                     </div>
-                                    <a href="#" class="mt-6 block font-medium text-gray-900">
-                                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                    <a href="#" class="block mt-6 font-medium text-gray-900">
+                                        <span class="absolute inset-0 z-10" aria-hidden="true"></span>
                                         Basic Tees
                                     </a>
                                     <p aria-hidden="true" class="mt-1">Shop now</p>
                                 </div>
                             </div>
-                            <div class="row-start-1 grid grid-cols-2 gap-y-10 gap-x-8 text-sm">
+                            <div class="grid grid-cols-2 row-start-1 text-sm gap-y-10 gap-x-8">
                                 <div>
                                     <p id="Clothing-heading" class="font-medium text-gray-900">
                                         Kontakty
@@ -162,12 +162,12 @@
                 </div>
             </div>
 
-            <div class="ml-auto flex items-center">
+            <div class="flex items-center ml-auto">
                 <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                     <span class="text-sm font-normal text-gray-700 hover:text-gray-800">
                         {{ now()->translatedFormat('D, j F Y\r.') }}
                     </span>
-                    <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
+                    <span class="w-px h-6 bg-gray-200" aria-hidden="true"></span>
                 </div>
 
                 <!-- Search -->
@@ -184,10 +184,10 @@
                 </div>
 
                 <!-- Cart -->
-                <div class="ml-4 flow-root lg:ml-6 hidden">
-                    <a href="#" class="group -m-2 p-2 flex items-center">
+                <div class="hidden flow-root ml-4 lg:ml-6">
+                    <a href="#" class="flex items-center p-2 -m-2 group">
                         <!-- Heroicon name: outline/shopping-bag -->
-                        <svg class="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -199,19 +199,19 @@
                 </div>
 
                 <!-- Settings Dropdown -->
-                <div class="ml-4 flow-root lg:ml-6 relative">
+                <div class="relative flow-root ml-4 lg:ml-6">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button
-                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                <img class="h-8 w-8 rounded-full object-cover"
+                                class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                <img class="object-cover w-8 h-8 rounded-full"
                                     src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                             @else
                             <span class="inline-flex rounded-md">
                                 <button type="button"
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                    class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
                                     {{ Auth::user()->name }}
 
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -266,19 +266,18 @@
 
 
 
-
-
-
-
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 hidden">
+<nav x-data="{ open: false }"
+    class="bg-white border-b border-gray-300 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                <div class="flex items-center flex-shrink-0 pr-5 border-r">
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 text-2xl font-bold">
+                        <x-jet-application-mark class="block w-auto h-9" />
+                        <span class="">{{config('app.name', 'Larax')}}</span>
+
                     </a>
                 </div>
 
@@ -287,18 +286,25 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
+                    @if(Auth::user()->is_admin)
+                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                        {{ __('Users') }}
+                    </x-jet-nav-link>
+                    @endif
+
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                <div class="ml-3 relative">
+                <div class="relative ml-3">
                     <x-jet-dropdown align="right" width="60">
                         <x-slot name="trigger">
                             <span class="inline-flex rounded-md">
                                 <button type="button"
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
+                                    class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
                                     {{ Auth::user()->currentTeam->name }}
 
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -346,19 +352,19 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-3 relative">
+                <div class="relative ml-3">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button
-                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                <img class="h-8 w-8 rounded-full object-cover"
+                                class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                <img class="object-cover w-8 h-8 rounded-full"
                                     src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                             @else
                             <span class="inline-flex rounded-md">
                                 <button type="button"
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                    class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
                                     {{ Auth::user()->name }}
 
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -405,10 +411,10 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
+            <div class="flex items-center -mr-2 sm:hidden">
                 <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    class="inline-flex items-center justify-center p-2 text-gray-400 transition rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -433,14 +439,14 @@
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                 <div class="flex-shrink-0 mr-3">
-                    <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                    <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}"
                         alt="{{ Auth::user()->name }}" />
                 </div>
                 @endif
 
                 <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
 
