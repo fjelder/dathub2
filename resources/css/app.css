@@ -5,9 +5,6 @@
 @import "tailwindcss/utilities";
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
-.main-menu a.active {
-    @apply font-semibold tracking-wide text-green-600;
-}
 ul li:not(ul li.active) {
     @apply hover:text-green-700;
 }
@@ -26,6 +23,9 @@ p.logo {
 
 p.logo.login {
     @apply text-3xl font-normal;
+    font-family: "Lexend Peta", sans-serif;
+}
+span.logo {
     font-family: "Lexend Peta", sans-serif;
 }
 
@@ -65,4 +65,19 @@ ul.tabs li a span {
 ul.tabs li a.active span,
 ul.tabs li a:hover span {
     @apply block;
+}
+
+/* main menu */
+nav .main-menu a {
+    @apply flex items-center px-2 py-2 text-sm font-normal tracking-wider capitalize border border-white;
+    border-radius: 4px;
+}
+nav .main-menu a.active {
+    @apply text-green-700 border-gray-200 bg-gray-50;
+}
+nav .main-menu a:not(a.active):hover {
+    @apply box-content text-green-700 transition-colors duration-300 border-gray-200 bg-gray-50;
+}
+nav .main-menu a.active:hover {
+    @apply opacity-90;
 }

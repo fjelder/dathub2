@@ -267,39 +267,58 @@
 
 
 <nav x-data="{ open: false }"
-    class="bg-white border-b border-gray-300 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
+    class="bg-white border-b border-green-600 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-6 mx-auto max-w-7xl xl:px-4">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center flex-shrink-0 pr-5 border-r">
-                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 text-2xl font-bold">
-                        <x-jet-application-mark class="block w-auto h-9" />
-                        <span class="">{{config('app.name', 'Larax')}}</span>
+                <div class="flex items-center pr-3">
+                    <a href="{{ route('dashboard') }}"
+                        class="flex items-center space-x-3 text-2xl font-bold transition-all duration-100 hover:scale-90">
+                        <x-jet-application-mark class="block w-auto h-10" />
+                        <span class="tracking-wider text-green-800">{{config('app.name',
+                            'Larax')}}</span>
 
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-6 sm:-my-px sm:ml-10 sm:flex sm:items-center main-menu">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <x-heroicon-o-home class="w-5 h-5" />
+                        <span>{{ __('Dashboard') }}</span>
                     </x-jet-nav-link>
 
                     @if(Auth::user()->is_admin)
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('Users') }}
+                        <x-heroicon-o-users class="w-5 h-5" />
+                        <span>{{ __('Users') }}</span>
                     </x-jet-nav-link>
                     @endif
+
+                    <x-jet-nav-link href="#">
+                        <x-heroicon-o-chip class="w-5 h-5" />
+                        <span>{{ __('Data') }}</span>
+                    </x-jet-nav-link>
 
                 </div>
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden space-x-5 border-l sm:flex sm:items-center">
+                <div class="relative ml-4 border rounded-sm cursor-pointer">
+
+                    <div
+                        class="box-content absolute inset-y-0 flex items-center justify-center w-8 border-r border-green-600 hover:bg-gray-100">
+                        <x-heroicon-o-search class="w-5 h-5" />
+                    </div>
+                    <input type="text"
+                        class="px-10 py-1 text-sm border-transparent rounded-sm focus:border-green-600 focus:ring-0 focus:bg-gray-50"
+                        placeholder="Wyszukaj">
+                </div>
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                <div class="relative ml-3">
+                <div class="relative">
                     <x-jet-dropdown align="right" width="60">
                         <x-slot name="trigger">
                             <span class="inline-flex rounded-md">
@@ -352,14 +371,14 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="relative ml-3">
+                <div class="relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button
-                                class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                <img class="object-cover w-8 h-8 rounded-full"
-                                    src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                class="flex text-sm transition border border-transparent rounded-md focus:outline-none focus:border-green-600">
+                                <img class="object-cover w-8 h-8 rounded-md" src="{{ Auth::user()->profile_photo_url }}"
+                                    alt="{{ Auth::user()->name }}" />
                             </button>
                             @else
                             <span class="inline-flex rounded-md">

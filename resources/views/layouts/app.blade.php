@@ -9,13 +9,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
 
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
 
     @livewireStyles
     <style>
@@ -24,7 +24,7 @@
         }
 
         .drodown-body {
-            margin-top: 21px;
+            margin-top: 12px;
             min-width: 10rem;
             max-width: 20rem;
         }
@@ -37,7 +37,7 @@
 </head>
 
 <body x-data="{ mobileMenuOpen: false, asideOpen: true }"
-    class="flex flex-col min-h-screen antialiased text-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
+    class="flex flex-col min-h-screen text-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
 
 
     @livewire('navigation-menu')

@@ -2,11 +2,10 @@
 
 @php
 $classes = ($active ?? false)
-? 'flex items-center text-sm font-semibold text-green-800 dark:text-green-500 tracking-wider'
-: 'flex items-center text-sm font-semibold tracking-wider text-gray-700 hover:text-gray-800 dark:text-gray-300
-dark:hover:text-gray-200';
+? 'active'
+: '';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
+<a {{ $attributes->merge(['class' => $classes.' space-x-2']) }}>
     {{ $slot }}
 </a>
