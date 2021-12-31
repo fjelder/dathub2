@@ -305,18 +305,19 @@
             </div>
 
             <!-- Right menu -->
-            <div class="hidden space-x-5 border-l sm:flex sm:items-center">
+            <div x-data="{searchBoxOpen: false }" class="hidden space-x-5 sm:flex sm:items-center"
+                :class="{'border-l': ! searchBoxOpen, 'border-l-0': searchBoxOpen}">
                 <!-- search box -->
-                <div class="relative ml-4 border rounded-md cursor-pointer" x-data="{searchBoxOpen: false }">
+                <div class="relative ml-4 border rounded-md cursor-pointer">
 
-                    <div class="box-content flex items-center justify-center w-8 h-8 border-r hover:bg-gray-100"
+                    <div class="box-content flex items-center justify-center w-8 h-8 hover:bg-gray-100"
                         @click="searchBoxOpen = ! searchBoxOpen; $nextTick(() => $refs.searchBox.focus());">
                         <x-heroicon-o-search class="w-5 h-5" />
                     </div>
                     <input type="text" name="searchSlug"
                         class="absolute right-0 h-12 mt-4 text-sm font-semibold text-green-700 border-2 border-t-0 border-green-600 w-96 focus:border-green-600 focus:ring-0 focus:bg-white"
                         placeholder="Wyszukaj" x-cloak x-ref="searchBox" x-show="searchBoxOpen"
-                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter="transition ease-out duration-200"
                         x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
                         x-transition:leave="transition ease-in duration-300"
                         x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
