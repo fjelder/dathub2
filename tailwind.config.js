@@ -16,7 +16,11 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+                sans: [
+                    "Source Sans Pro",
+                    "Poppins",
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
             zIndex: {
                 "-10": "-10",

@@ -9,7 +9,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
 
@@ -42,13 +47,7 @@
 
     @livewire('navigation-menu')
     <div class="flex-grow">
-        <div class="box-border relative z-50 h-16 bg-white border-b border-gray-300 shadow-sm">
 
-            @include('layouts.header')
-            <!-- mobile menu -->
-            <x-mobile-menu />
-
-        </div>
 
 
         @if (isset($header) || isset($breadcrumbs))
@@ -289,6 +288,15 @@
                 </div>
 
             </main>
+        </div>
+
+
+        <div class="box-border relative z-50 h-16 bg-white border-b border-gray-300 shadow-sm">
+
+            @include('layouts.header')
+            <!-- mobile menu -->
+            <x-mobile-menu />
+
         </div>
 
     </div>

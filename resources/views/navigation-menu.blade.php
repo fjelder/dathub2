@@ -267,54 +267,59 @@
 
 
 <nav x-data="{ open: false }"
-    class="bg-white border-b border-green-600 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
+    class="bg-white border-b-2 border-green-600 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
     <!-- Primary Navigation Menu -->
-    <div class="px-6 mx-auto max-w-7xl xl:px-4">
+    <div class="px-6 mx-auto max-w-7xl xl:px-0">
         <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="flex items-center pr-3">
-                    <a href="{{ route('dashboard') }}"
-                        class="flex items-center space-x-3 text-2xl font-bold transition-all duration-100 hover:scale-90">
-                        <x-jet-application-mark class="block w-auto h-10" />
-                        <span class="tracking-wider text-green-800">{{config('app.name',
-                            'Larax')}}</span>
 
-                    </a>
-                </div>
+            <!-- Navigation Links -->
+            <div class="hidden space-x-6 lg:flex lg:items-center main-menu">
+                <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-heroicon-o-home class="w-5 h-5" />
+                    <span>{{ __('Dashboard') }}</span>
+                </x-jet-nav-link>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-6 sm:-my-px sm:ml-10 sm:flex sm:items-center main-menu">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        <x-heroicon-o-home class="w-5 h-5" />
-                        <span>{{ __('Dashboard') }}</span>
-                    </x-jet-nav-link>
+                @if(Auth::user()->is_admin)
+                <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                    <x-heroicon-o-users class="w-5 h-5" />
+                    <span>{{ __('Users') }}</span>
+                </x-jet-nav-link>
+                @endif
 
-                    @if(Auth::user()->is_admin)
-                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        <x-heroicon-o-users class="w-5 h-5" />
-                        <span>{{ __('Users') }}</span>
-                    </x-jet-nav-link>
-                    @endif
-
-                    <x-jet-nav-link href="#">
-                        <x-heroicon-o-chip class="w-5 h-5" />
-                        <span>{{ __('Data') }}</span>
-                    </x-jet-nav-link>
-
-                </div>
+                <x-jet-nav-link href="#">
+                    <x-heroicon-o-chip class="w-5 h-5" />
+                    <span>{{ __('Data') }}</span>
+                </x-jet-nav-link>
             </div>
 
-            <div class="hidden space-x-5 border-l sm:flex sm:items-center">
-                <div class="relative ml-4 border rounded-sm cursor-pointer">
 
-                    <div
-                        class="box-content absolute inset-y-0 flex items-center justify-center w-8 border-r border-green-600 hover:bg-gray-100">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="{{ route('dashboard') }}"
+                    class="flex items-center space-x-3 text-2xl font-bold transition-all duration-100 hover:scale-95">
+                    <x-jet-application-mark class="block w-auto h-10" />
+                    <span class="tracking-wider text-green-900 hover:border-b-2">{{config('app.name',
+                        'Larax')}}</span>
+
+                </a>
+            </div>
+
+            <!-- Right menu -->
+            <div class="hidden space-x-5 border-l sm:flex sm:items-center">
+                <!-- search box -->
+                <div class="relative ml-4 border rounded-md cursor-pointer" x-data="{searchBoxOpen: false }">
+
+                    <div class="box-content flex items-center justify-center w-8 h-8 border-r hover:bg-gray-100"
+                        @click="searchBoxOpen = ! searchBoxOpen; $nextTick(() => $refs.searchBox.focus());">
                         <x-heroicon-o-search class="w-5 h-5" />
                     </div>
-                    <input type="text"
-                        class="px-10 py-1 text-sm border-transparent rounded-sm focus:border-green-600 focus:ring-0 focus:bg-gray-50"
-                        placeholder="Wyszukaj">
+                    <input type="text" name="searchSlug"
+                        class="absolute right-0 h-12 mt-4 text-sm font-semibold text-green-700 border-2 border-t-0 border-green-600 w-96 focus:border-green-600 focus:ring-0 focus:bg-white"
+                        placeholder="Wyszukaj" x-cloak x-ref="searchBox" x-show="searchBoxOpen"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
                 </div>
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
