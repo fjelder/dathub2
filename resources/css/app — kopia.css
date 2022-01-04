@@ -1,0 +1,136 @@
+@import "fonts/lexend_peta.css";
+/* @import "fonts/poppins.css"; */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+ul li:not(ul li.active) {
+    @apply hover:text-green-700;
+}
+ul li.active {
+    @apply px-2 py-1 text-white bg-green-400 rounded-md shadow-sm;
+}
+
+div h2 {
+    @apply text-xl font-medium leading-tight tracking-wide text-gray-600;
+}
+
+p.logo {
+    font-family: cursive;
+    @apply text-2xl tracking-wide text-indigo-800;
+}
+
+p.logo.login {
+    @apply text-3xl font-normal;
+    font-family: "Lexend Peta", sans-serif;
+}
+span.logo {
+    font-family: "Lexend Peta", sans-serif;
+}
+
+table thead tr th {
+    font-family: "Poppins", "Roboto Slab", serif;
+    @apply px-6 py-3 text-xs font-normal tracking-wider text-left text-gray-500 uppercase;
+}
+
+.text-extra {
+    @apply font-semibold text-indigo-500;
+}
+
+input[type="text"].form-input {
+    @apply w-full px-2 py-1 text-xs font-semibold text-gray-600 placeholder-gray-400 bg-gray-100 border border-gray-200 rounded-sm focus:ring-green-300 focus:border-green-300 h-9;
+}
+
+input[type="text"].search-input.form-input {
+    @apply px-12;
+}
+
+select.form-select {
+    @apply w-full px-2 py-1 text-xs font-semibold text-gray-600 placeholder-gray-400 bg-gray-100 border border-gray-200 rounded-sm focus:ring-green-300 focus:border-green-300 h-9;
+}
+
+ul.tabs li a {
+    @apply relative block p-4 text-sm font-medium text-gray-500 border-t border-gray-50;
+}
+ul.tabs li a:hover {
+    @apply bg-gray-100 border-gray-100;
+}
+ul.tabs li a.active {
+    @apply p-4 text-sm font-medium text-green-600 border-l border-r border-gray-200 bg-gray-50 hover:bg-gray-100;
+}
+ul.tabs li a span {
+    @apply absolute inset-x-0 hidden w-full h-px bg-green-500 -bottom-px;
+}
+ul.tabs li a.active span,
+ul.tabs li a:hover span {
+    @apply block;
+}
+
+/* main menu */
+nav .main-menu a {
+    @apply flex items-center px-2 py-2 text-sm font-normal tracking-wider capitalize border border-white;
+    border-radius: 4px;
+}
+nav .main-menu a.active {
+    @apply text-green-700 border-gray-200 bg-gray-50;
+}
+nav .main-menu a:not(a.active):hover {
+    @apply box-content text-green-700 transition-colors duration-300 border-gray-200 bg-gray-50;
+}
+nav .main-menu a.active:hover {
+    @apply opacity-90;
+}
+
+/* new */
+
+html {
+    @apply font-normal bg-slate-100 text-slate-600;
+}
+nav .logo {
+    font-family: "Oswald", sans-serif;
+    @apply text-2xl antialiased font-semibold tracking-wider text-slate-600;
+}
+nav .logo > span {
+    @apply border-b-2;
+}
+/* main menu */
+.main-menu a {
+    @apply mr-6 text-sm font-normal text-gray-500;
+}
+.main-menu a.active > svg {
+    @apply text-emerald-600;
+}
+.main-menu a.active:after,
+.main-menu a:hover:after {
+    @apply absolute inset-0 block border-b-2 border-emerald-600;
+    content: "";
+}
+.main-menu a:hover:not(a.active) {
+    @apply text-slate-700;
+}
+
+.main-menu a > svg {
+    @apply w-5 h-5 mr-3;
+}
+
+input[type="text"] {
+    @apply focus:rounded-none focus:border-0 focus:border-b focus:border-emerald-700 focus:ring-0 focus:outline-none ring-slate-700;
+}
+/* breadcrumbs */
+ul.breadcrumbs li {
+    @apply text-sm;
+}
+ul.breadcrumbs li:last-child {
+    @apply font-semibold text-emerald-700;
+}
+ul.breadcrumbs > svg {
+    @apply w-4 h-4 mx-3;
+}
+/* user-menu */
+.user-menu ul li {
+    @apply py-2 text-sm font-normal border-b cursor-pointer border-slate-200 hover:bg-slate-100;
+}
+.user-menu ul li:last-child {
+    @apply border-b-0;
+}

@@ -17,6 +17,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: [
+                    "Inter var",
                     "Source Sans Pro",
                     "Poppins",
                     ...defaultTheme.fontFamily.sans,

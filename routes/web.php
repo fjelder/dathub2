@@ -5,7 +5,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\CompanyController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,36 +20,46 @@ use App\Http\Controllers\CompanyController;
 //     return view('welcome');
 // });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get("/tailwind", function () {
+    return view("tailwind");
+});
 
-Route::get('/users2', function () {
+Route::middleware(["auth:sanctum", "verified"])
+    ->get("/", function () {
+        return view("dashboard");
+    })
+    ->name("dashboard");
+
+Route::get("/users2", function () {
     $users = User::paginate(5);
-    return view('dashboard', ['users' => $users]);
-})->name('users');
+    return view("dashboard", ["users" => $users]);
+})->name("users");
 
-Route::middleware(['auth:sanctum', 'verified'])->prefix('data')->group(function () {
+Route::middleware(["auth:sanctum", "verified"])
+    ->prefix("data")
+    ->group(function () {
+        Route::resources([
+            "contacts" => PersonController::class,
+            "companies" => CompanyController::class,
+        ]);
+        Route::get("lines", function () {
+            return view("date.railway-line.index");
+        })->name("railwayLines");
+    });
+
+Route::middleware(["auth:sanctum", "verified"])
+    ->prefix("settings")
+    ->group(function () {
+        Route::get("footer_links", function () {
+            return view("settings.footer-links");
+        })->name("footerLinks");
+        Route::get("/", function () {
+            return redirect(route(config("set.settingHomeRouteRedirect")));
+        })->name("settings");
+    });
+
+Route::middleware(["isAdmin"])->group(function () {
     Route::resources([
-        'contacts' => PersonController::class,
-        'companies' => CompanyController::class
-    ]);
-    Route::get('lines', function(){
-        return view('date.railway-line.index');
-    })->name('railwayLines');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->prefix('settings')->group(function () {
-    Route::get('footer_links', function(){
-        return view('settings.footer-links');
-    })->name('footerLinks');
-    Route::get('/', function(){
-        return redirect(route(config('set.settingHomeRouteRedirect')));
-    })->name('settings');
-});
-
-Route::middleware(['isAdmin'])->group(function () {
-    Route::resources([
-        'users' => UserController::class
+        "users" => UserController::class,
     ]);
 });
