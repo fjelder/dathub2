@@ -43,7 +43,7 @@
 
     <header class="w-full bg-white border-b">
         <nav class="">
-            <div class="px-6 bg-white border-b lg:px-0 border-slate-300">
+            <div class="px-6 bg-white border-b-2 border-slate-600 lg:px-0">
                 <div class="flex items-center justify-between h-16 mx-auto max-w-7xl">
 
                     <a href="#" class="flex items-center justify-center flex-1 logo ">

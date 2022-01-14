@@ -1314,12 +1314,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.border-gray-400{
     --tw-border-opacity: 1;
     border-color: rgb(156 163 175 / var(--tw-border-opacity));
-}.border-slate-300{
-    --tw-border-opacity: 1;
-    border-color: rgb(203 213 225 / var(--tw-border-opacity));
 }.border-emerald-700{
     --tw-border-opacity: 1;
     border-color: rgb(4 120 87 / var(--tw-border-opacity));
+}.border-slate-300{
+    --tw-border-opacity: 1;
+    border-color: rgb(203 213 225 / var(--tw-border-opacity));
 }.border-indigo-600{
     --tw-border-opacity: 1;
     border-color: rgb(79 70 229 / var(--tw-border-opacity));
